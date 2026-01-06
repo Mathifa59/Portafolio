@@ -26,7 +26,7 @@ export default function Hero() {
             className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
           >
             Hola, soy <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">
               Mathias Vasquez
             </span>
           </motion.h1>
@@ -65,9 +65,9 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="relative flex justify-center md:justify-end z-10"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 blur-3xl rounded-full -z-10 transform scale-110" />
+          <div className="absolute inset-0 bg-linear-to-tr from-cyan-500/20 to-purple-500/20 blur-3xl rounded-full -z-10 transform scale-110" />
           
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-gradient-to-tr from-cyan-400 via-purple-500 to-transparent">
+          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-linear-to-tr from-cyan-400 via-purple-500 to-transparent">
             {/* CAMBIO 2: Añadimos 'relative' aquí para que Image sepa dónde ubicarse */}
             <div className="relative w-full h-full rounded-full overflow-hidden bg-slate-900 border-4 border-slate-900">
                 {/* CAMBIO 3: Usamos el componente Image */}

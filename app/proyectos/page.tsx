@@ -7,7 +7,7 @@ export default function ProyectosPage() {
       {/* Encabezado de la página */}
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-          Mis <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Proyectos</span>
+          Mis <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500">Proyectos</span>
         </h1>
         <p className="text-gray-400 text-lg">
           Una selección de mis trabajos más recientes. Desde aplicaciones web complejas hasta landing pages optimizadas.
