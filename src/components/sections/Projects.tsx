@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { projects, Project } from "@/data/projects"; 
-import { ExternalLink, Github, ArrowRight, Rocket } from "lucide-react"; // Importamos Rocket para el icono de startup
+import { ExternalLink, ArrowRight, Rocket } from "lucide-react"; // Importamos Rocket para el icono de startup
 import Image from "next/image";
 
 export default function Projects() {
