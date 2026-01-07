@@ -1,12 +1,14 @@
 "use client";
-import { motion } from "framer-motion";
-import { Github, Linkedin } from "lucide-react";
+import { useState } from "react"; // 1. Importamos useState
+import { motion, AnimatePresence } from "framer-motion"; // 2. Importamos AnimatePresence
+import { Github, Linkedin, Menu, X } from "lucide-react"; // 3. Importamos Menu y X
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();
-  
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Estado para el menú móvil
+
   const links = [
     { name: "Inicio", href: "/" },
     { name: "Proyectos", href: "/proyectos" },
@@ -16,20 +18,22 @@ export default function Navbar() {
   ];
 
   return (
+    <>
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4 pointer-events-none"
+      className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center pt-6 px-4 pointer-events-none"
     >
-      <div className="pointer-events-auto flex items-center justify-between px-6 py-3 rounded-full bg-slate-900/90 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50 w-full max-w-4xl">
+      {/* --- BARRA PRINCIPAL (CÁPSULA) --- */}
+      <div className="pointer-events-auto flex items-center justify-between px-6 py-3 rounded-full bg-slate-900/90 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50 w-full max-w-4xl relative z-50">
         
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold hover:opacity-80 transition-opacity text-white">
+        <Link href="/" className="text-xl font-bold hover:opacity-80 transition-opacity text-white shrink-0">
           Mathias<span className="text-cyan-400">Vasquez</span>.
         </Link>
 
-        {/* Menú Desktop */}
+        {/* Menú Desktop (Se oculta en móvil con 'hidden md:flex') */}
         <ul className="hidden md:flex items-center gap-1">
           {links.map((link) => {
             const isActive = pathname === link.href;
@@ -39,17 +43,12 @@ export default function Navbar() {
                   href={link.href}
                   className="relative px-4 py-2 text-sm font-medium group block"
                 >
-                  {/* Texto del enlace */}
                   <span className={`relative z-10 transition-colors duration-300 ${
                     isActive ? "text-white" : "text-gray-400 group-hover:text-white"
                   }`}>
                     {link.name}
                   </span>
-
-                  {/* EFECTO HOVER: Luz de fondo al pasar el mouse */}
                   <span className="absolute inset-0 rounded-full bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* INDICADOR ACTIVO: Pequeño punto debajo (más sutil que la sombra) */}
                   {isActive && (
                     <motion.span 
                       layoutId="activeTab"
@@ -62,13 +61,69 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* Iconos Sociales */}
-        <div className="flex items-center gap-4 border-l border-white/10 pl-6">
-            <SocialIcon href="https://github.com/Mathifa59" icon={<Github size={18} />} />
-            <SocialIcon href="https://www.linkedin.com/in/mathias-vasquez/" icon={<Linkedin size={18} />} />
+        {/* Iconos Sociales (Escritorio) & Botón Hamburguesa (Móvil) */}
+        <div className="flex items-center gap-4 pl-6 md:border-l border-white/10">
+            
+            {/* Iconos visibles solo en escritorio o pantallas grandes */}
+            <div className="hidden md:flex items-center gap-4">
+                <SocialIcon href="https://github.com/Mathifa59" icon={<Github size={18} />} />
+                <SocialIcon href="https://www.linkedin.com/in/mathias-vasquez/" icon={<Linkedin size={18} />} />
+            </div>
+
+            {/* BOTÓN MENÚ MÓVIL (Visible solo en móvil) */}
+            <button 
+                className="md:hidden text-gray-300 hover:text-white"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
         </div>
       </div>
+
+      {/* --- MENÚ DESPLEGABLE MÓVIL --- */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+            <motion.div
+                initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+                className="pointer-events-auto absolute top-20 w-full max-w-sm px-4"
+            >
+                <div className="flex flex-col p-4 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50">
+                    <ul className="flex flex-col gap-2">
+                        {links.map((link) => {
+                             const isActive = pathname === link.href;
+                             return (
+                                <li key={link.name}>
+                                    <Link 
+                                        href={link.href}
+                                        onClick={() => setIsMobileMenuOpen(false)} // Cerrar al hacer click
+                                        className={`block px-4 py-3 rounded-xl text-center font-medium transition-colors ${
+                                            isActive 
+                                            ? "bg-white/10 text-white" 
+                                            : "text-gray-400 hover:bg-white/5 hover:text-white"
+                                        }`}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                             )
+                        })}
+                    </ul>
+
+                    {/* Iconos sociales en el menú móvil */}
+                    <div className="flex justify-center gap-6 mt-4 pt-4 border-t border-white/10">
+                        <SocialIcon href="https://github.com/Mathifa59" icon={<Github size={20} />} />
+                        <SocialIcon href="https://www.linkedin.com/in/mathias-vasquez/" icon={<Linkedin size={20} />} />
+                    </div>
+                </div>
+            </motion.div>
+        )}
+      </AnimatePresence>
+
     </motion.nav>
+    </>
   );
 }
 
