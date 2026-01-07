@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin, Terminal, Code2 } from "lucide-react";
-import Image from "next/image";
+import { Briefcase, Calendar, MapPin } from "lucide-react";
+// import Image from "next/image"; // Descomenta si usas los logos
 
 export default function Experience() {
   const experiences = [
@@ -16,7 +16,6 @@ export default function Experience() {
         "Conexión e integración con APIs de Jira para gestión de requerimientos.",
         "Implementación de UI/UX siguiendo lineamientos corporativos estrictos.",
       ],
-      // CAMBIAR AQUÍ: Pon el nombre de tu archivo
       logo: "/images/logo-alignet.png", 
       color: "border-blue-500/30 bg-blue-950/10",
       tech: ["React", "Node.js", "Jira API"]
@@ -32,7 +31,6 @@ export default function Experience() {
         "Estrategia SEO on-page y campañas de Meta/Google Ads.",
         "Analítica avanzada con Google Analytics 4.",
       ],
-      // CAMBIAR AQUÍ: Pon el nombre de tu archivo
       logo: "/images/logo-mv.png",
       color: "border-purple-500/30 bg-purple-950/10",
       tech: ["Next.js", "SEO", "Google Ads"]
@@ -41,10 +39,8 @@ export default function Experience() {
 
   return (
     <section className="min-h-screen flex items-center justify-center py-20 px-4 md:px-12 bg-slate-950">
-      {/* Usamos max-w-6xl para que sea más alargado y ocupe más pantalla */}
       <div className="max-w-6xl w-full">
         
-        {/* Título Estilo Terminal */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,30 +52,32 @@ export default function Experience() {
           <span className="animate-pulse bg-gray-500 w-3 h-6 block ml-1"></span>
         </motion.div>
 
-        <div className="space-y-6">
+        {/* Contenedor relativo para la línea de tiempo */}
+        <div className="relative space-y-8 ml-4 md:ml-0">
+          
+          {/* --- CORRECCIÓN: Línea de tiempo continua --- */}
+          {/* Esta línea ahora es una sola barra larga detrás de todo */}
+          <div className="absolute left-8 top-4 bottom-4 w-px bg-white/10 hidden md:block h-full z-0" />
+
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.id}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="group relative"
+              className="relative z-10" // Z-10 para estar sobre la línea
             >
-              {/* Línea conectora estilo git branch (Decorativa) */}
-              <div className="absolute left-8 top-16 bottom-0 w-px bg-white/10 group-last:hidden md:block hidden" />
-
-              <div className={`relative flex flex-col md:flex-row gap-6 p-6 rounded-lg border ${exp.color} hover:bg-white/5 transition-all w-full`}>
+              <div className={`relative flex flex-col md:flex-row gap-6 p-6 rounded-lg border ${exp.color} hover:bg-white/5 transition-all w-full bg-slate-950/80`}>
                 
-                {/* --- LOGO / ICONO --- */}
+                {/* LOGO / ICONO */}
                 <div className="shrink-0">
-                  <div className="w-16 h-16 rounded-lg bg-[#0d1117] border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-                    {/* Descomenta esto cuando tengas los logos */}
+                  <div className="w-16 h-16 rounded-lg bg-[#0d1117] border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform relative z-20">
                     {/* <Image src={exp.logo} alt={exp.company} width={64} height={64} className="object-cover rounded-md" /> */}
                     <Briefcase className="text-gray-400 group-hover:text-white" size={28} />
                   </div>
                 </div>
 
-                {/* --- CONTENIDO --- */}
+                {/* CONTENIDO */}
                 <div className="grow font-mono">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4 gap-2">
                     <div>
@@ -91,7 +89,6 @@ export default function Experience() {
                       </p>
                     </div>
 
-                    {/* Fecha y Lugar estilo Comentario de Código */}
                     <div className="text-xs md:text-sm text-gray-500 bg-black/20 px-3 py-2 rounded border border-white/5 h-fit text-right">
                       <div className="flex items-center justify-end gap-2">
                          <Calendar size={14} /> {exp.date}
@@ -102,7 +99,6 @@ export default function Experience() {
                     </div>
                   </div>
 
-                  {/* Descripción */}
                   <ul className="space-y-2 mb-4 font-sans text-gray-300">
                     {exp.description.map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
@@ -112,7 +108,6 @@ export default function Experience() {
                     ))}
                   </ul>
 
-                  {/* Badges de Tecnologías */}
                   <div className="flex gap-2 flex-wrap pt-2 border-t border-white/5">
                     {exp.tech.map((t) => (
                       <span key={t} className="px-2 py-1 text-xs rounded bg-white/5 text-gray-400 border border-white/5">

@@ -2,14 +2,14 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image"; // <--- CAMBIO 1: Importamos el componente optimizado
+import Image from "next/image";
 
 export default function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center px-8 md:px-20 py-20 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full">
         
-        {/* COLUMNA IZQUIERDA: TEXTO (Sin cambios) */}
+        {/* COLUMNA IZQUIERDA: TEXTO */}
         <div className="flex flex-col items-start z-10">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
@@ -52,8 +52,8 @@ export default function Hero() {
             </Link>
             
             <div className="flex gap-3">
-               <SocialButton href="#" icon={<Github />} />
-               <SocialButton href="#" icon={<Linkedin />} />
+               <SocialButton href="https://github.com/Mathifa59" icon={<Github />} />
+               <SocialButton href="https://www.linkedin.com/in/mathias-vasquez/" icon={<Linkedin />} />
             </div>
           </motion.div>
         </div>
@@ -65,17 +65,16 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="relative flex justify-center md:justify-end z-10"
         >
-          <div className="absolute inset-0 bg-linear-to-tr from-cyan-500/20 to-purple-500/20 blur-3xl rounded-full -z-10 transform scale-110" />
+          {/* AQUI ELIMINAMOS EL DIV DE SOMBRA (BLUR) */}
           
+          {/* Contenedor con borde gradiente */}
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-linear-to-tr from-cyan-400 via-purple-500 to-transparent">
-            {/* CAMBIO 2: Añadimos 'relative' aquí para que Image sepa dónde ubicarse */}
             <div className="relative w-full h-full rounded-full overflow-hidden bg-slate-900 border-4 border-slate-900">
-                {/* CAMBIO 3: Usamos el componente Image */}
                 <Image 
                   src="/images/MathiasVasquez.jpg" 
                   alt="Mathias Vasquez" 
-                  fill // Esto hace que ocupe todo el espacio del padre
-                  priority // Esto le dice a Google que cargue esta imagen PRIMERO (Mejora SEO)
+                  fill
+                  priority
                   className="object-cover transform hover:scale-110 transition-transform duration-500" 
                 />
             </div>
@@ -89,7 +88,7 @@ export default function Hero() {
 
 function SocialButton({ icon, href }: { icon: React.ReactNode, href: string }) {
     return (
-      <a href={href} className="p-3 bg-slate-800/50 border border-white/10 rounded-lg text-white hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all">
+      <a href={href} target="_blank" className="p-3 bg-slate-800/50 border border-white/10 rounded-lg text-white hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all">
         {icon}
       </a>
     )

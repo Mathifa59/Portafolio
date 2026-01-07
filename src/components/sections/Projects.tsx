@@ -77,7 +77,8 @@ function FeaturedCard({ project }: { project: Project }) {
         
         {/* Lado Izquierdo: Info (3 columnas) */}
         <div className="lg:col-span-2 p-8 md:p-12 flex flex-col justify-center relative z-20 bg-slate-900/60 backdrop-blur-sm lg:border-r border-white/5">
-          <div className="mb-6">
+          {/* ... (El contenido del texto sigue igual) ... */}
+           <div className="mb-6">
              <span className="px-4 py-1.5 rounded-full text-xs font-bold bg-purple-600 text-white shadow-lg shadow-purple-500/30 tracking-wide uppercase">
                {project.role}
              </span>
@@ -118,7 +119,8 @@ function FeaturedCard({ project }: { project: Project }) {
             src={project.image} 
             alt={project.title} 
             fill
-            className="object-cover object-top-left group-hover:scale-105 transition-transform duration-1000"
+            // CAMBIO AQUÍ: Usamos object-center para un mejor encuadre
+            className="object-cover object-center group-hover:scale-105 transition-transform duration-1000"
           />
         </div>
 
