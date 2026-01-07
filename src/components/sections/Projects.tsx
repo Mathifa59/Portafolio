@@ -161,7 +161,7 @@ function StandardCard({ project, index }: { project: Project; index: number }) {
             <span className="text-xs font-bold text-cyan-500 uppercase tracking-wider">{project.role}</span>
         </div>
         
-        <p className="text-gray-400 text-sm mb-6 grow leading-relaxed">
+        <p className="text-gray-400 text-sm mb-6 6grow leading-relaxed">
           {project.description}
         </p>
 
