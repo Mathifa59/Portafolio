@@ -1,13 +1,13 @@
 export interface Project {
   id: number;
   title: string;
-  role: string; // Nuevo campo para especificar tu rol
+  role: string;
   description: string;
   tech: string[];
   link: string;
-  github?: string; // Opcional por si es privado
+  github?: string;
   image: string;
-  isFeatured?: boolean; // Para saber cuál destacar
+  isFeatured?: boolean;
 }
 
 export const projects: Project[] = [
@@ -17,9 +17,9 @@ export const projects: Project[] = [
     role: "Co-Founder & CTO",
     description: "Startup de desarrollo de software enfocada en soluciones digitales escalables. Lidero el equipo técnico transformando ideas en productos de alto impacto.",
     tech: ["Next.js", "React", "Tailwind", "Team Leadership"],
-    link: "https://devhorses.com", // Cambia esto si tienes la URL exacta
-    image: "/images/devhorses.png",
-    isFeatured: true // ESTE ES EL PROYECTO DESTACADO
+    link: "https://devhorses.com", 
+    image: "/images/DevHorses.png", // <--- ACTUALIZADO (Coincide con tu archivo)
+    isFeatured: true
   },
   {
     id: 2,
@@ -27,8 +27,8 @@ export const projects: Project[] = [
     role: "Frontend Developer",
     description: "Sitio web turístico para un hotel en Cusco. Diseño inmersivo enfocado en la experiencia del usuario y sistema de reservas directo.",
     tech: ["React", "Tailwind", "UX/UI"],
-    link: "https://apugardenlodge.com/", // Link actualizado
-    image: "/images/sumaq-hotel.png",
+    link: "https://apugardenlodge.com/",
+    image: "/images/Apu Garden Lodge.png", // <--- ACTUALIZADO (Con espacios, tal cual tu archivo)
     isFeatured: false
   },
   {
@@ -37,8 +37,9 @@ export const projects: Project[] = [
     role: "Full Stack Developer",
     description: "Plataforma web corporativa para firma legal. Optimización SEO, integración con CRM y diseño profesional para captación de clientes.",
     tech: ["Next.js", "WordPress", "Analytics"],
-    link: "#", // <--- Pega aquí el link cuando lo tengas
-    image: "/images/devhorses.png", // Usa una imagen genérica o sube el logo del estudio
+    link: "#", 
+    // Como no tienes imagen específica para MV, usamos DevHorses o una genérica por ahora
+    image: "/images/DevHorses.png", 
     isFeatured: false
   }
 ];
