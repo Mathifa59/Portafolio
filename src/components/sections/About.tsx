@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function About() {
-  // Rutas actualizadas según tu captura de archivos (versiones blancas)
   const technologies = [
     { name: "React", src: "/images/react (1).svg" },
     { name: "Next.js", src: "/images/nextdotjs (1).svg" },
@@ -16,44 +15,52 @@ export default function About() {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-20 px-6 md:px-12 bg-slate-950">
-      <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    // LIMPIEZA TOTAL:
+    // 1. Quitamos 'bg-slate-950' y 'min-h-screen'.
+    // 2. Quitamos cualquier 'div' absoluto de fondo.
+    // 3. Usamos las mismas clases de espaciado que en tu archivo projects.tsx
+    <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
         
-        {/* COLUMNA FOTO */}
+        {/* COLUMNA FOTO + CARD */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative group flex justify-center md:justify-start"
+          className="flex flex-col items-center justify-center"
         >
-          {/* Efecto de brillo trasero (Gradient) */}
-          <div className="absolute -inset-1 bg-linear-to-r from-cyan-500 to-purple-600 rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-          
-          <div className="relative w-full max-w-md aspect-square rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
+          {/* FOTO */}
+          <div className="relative w-full max-w-sm aspect-square rounded-[2.5rem] overflow-hidden border border-white/10 bg-slate-900 shadow-2xl z-10">
             <Image 
               src="/images/MathiasVasquez.jpg" 
               alt="Mathias Vasquez"
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover object-center transform hover:scale-105 transition-transform duration-500" 
             />
-            
-            {/* Tarjeta Flotante "Available" */}
-            <div className="absolute bottom-6 left-6 right-6 bg-slate-950/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl flex items-center gap-4 shadow-lg">
-              <span className="relative flex h-3 w-3">
+          </div>
+          
+          {/* TARJETA FLOTANTE (Centrada bajo la foto) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mt-6 w-full max-w-sm bg-slate-900/80 backdrop-blur-md border border-white/10 p-4 rounded-xl flex items-center gap-4 shadow-xl border-l-4 border-l-green-500 z-20"
+          >
+             <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
               </span>
               <div>
-                <p className="text-white text-sm font-semibold">Disponible para proyectos</p>
+                <p className="text-white text-sm font-bold">Disponible para proyectos</p>
                 <p className="text-gray-400 text-xs">¡Hablemos de tu idea!</p>
               </div>
-            </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* COLUMNA BIO */}
         <div className="space-y-8">
-          <div className="space-y-2">
+          <div className="space-y-2 text-center md:text-left">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +82,7 @@ export default function About() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-300 space-y-4 text-lg leading-relaxed font-light"
+            className="text-gray-300 space-y-4 text-lg leading-relaxed font-light text-justify md:text-left"
           >
             <p>
               Soy <strong className="text-white font-semibold">Mathias Vasquez</strong>, un apasionado desarrollador Full Stack y emprendedor. Actualmente lidero <span className="text-purple-400 font-semibold">DevHorses</span>, una startup enfocada en transformar ideas en soluciones digitales escalables.
@@ -85,10 +92,9 @@ export default function About() {
             </p>
           </motion.div>
 
-          {/* GRID DE TECNOLOGÍAS (Iconos Blancos) */}
+          {/* GRID ICONOS */}
           <div className="space-y-5">
-            <h3 className="text-2xl font-bold text-white">Tecnologías</h3>
-            
+            <h3 className="text-2xl font-bold text-white text-center md:text-left">Tecnologías</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {technologies.map((tech, index) => (
                 <motion.div
@@ -96,9 +102,7 @@ export default function About() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.05 }}
-                  // AQUÍ ESTÁ LA MAGIA DEL HOVER:
-                  // border-white/10 (sutil) -> hover:border-white (resalta blanco)
-                  className="group flex flex-col items-center justify-center p-4 rounded-2xl border border-white/10 bg-white/5 hover:border-white hover:bg-white/10 transition-all duration-300 cursor-default"
+                  className="group flex flex-col items-center justify-center p-4 rounded-2xl border border-white/10 bg-white/5 hover:border-cyan-500/30 hover:bg-cyan-950/30 transition-all duration-300 cursor-default"
                 >
                   <div className="mb-3 relative w-10 h-10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Image 
@@ -116,7 +120,6 @@ export default function About() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>

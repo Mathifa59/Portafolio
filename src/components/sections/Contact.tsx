@@ -6,7 +6,6 @@ import { Mail, Linkedin, Github, Terminal, Copy, Check, ExternalLink, Send } fro
 export default function Contact() {
   const [copied, setCopied] = useState(false);
 
-  // Función exclusiva para COPIAR
   const handleCopy = () => {
     navigator.clipboard.writeText("mathiwen519@gmail.com");
     setCopied(true);
@@ -18,13 +17,13 @@ export default function Contact() {
       key: "email",
       label: "Email",
       value: "mathiwen519@gmail.com",
-      action: "mailto:mathiwen519@gmail.com", // <--- AHORA ABRE EL CORREO
+      action: "mailto:mathiwen519@gmail.com",
       icon: <Mail className="text-cyan-400" size={20} />,
       color: "hover:border-cyan-500/50 hover:bg-cyan-950/20",
-      isLink: true, // Esto lo convierte en un enlace real
+      isLink: true,
       btnText: "Enviar Email",
       btnIcon: <Send size={14} />,
-      canCopy: true // Propiedad nueva para mostrar el botón de copiar aparte
+      canCopy: true
     },
     {
       key: "linkedin",
@@ -53,8 +52,14 @@ export default function Contact() {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-20 px-4 md:px-20 bg-slate-950">
-      <div className="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    // CAMBIOS REALIZADOS:
+    // 1. Quitamos 'bg-slate-950' para que el fondo global se vea.
+    // 2. Quitamos 'min-h-screen', 'flex', 'items-center', 'justify-center'.
+    // 3. Estandarizamos el ancho y padding: 'max-w-7xl mx-auto px-6 md:px-12'.
+    <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+      
+      {/* Quitamos el 'max-w-5xl' interno para que aproveche el espacio igual que las otras secciones */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
         
         {/* COLUMNA IZQUIERDA: TEXTO */}
         <div className="space-y-8">
@@ -140,7 +145,7 @@ export default function Contact() {
                                             <div className="flex items-center gap-2">
                                                 <p className="text-cyan-100 font-medium break-all">{method.value}</p>
                                                 
-                                                {/* BOTÓN DE COPIADO RÁPIDO (SOLO PARA EMAIL) */}
+                                                {/* BOTÓN DE COPIADO RÁPIDO */}
                                                 {method.canCopy && (
                                                     <button 
                                                         onClick={handleCopy}
@@ -158,7 +163,6 @@ export default function Contact() {
                                     {method.isLink ? (
                                         <a 
                                             href={method.action as string} 
-                                            // Si es mailto no usamos target blank, si es web sí.
                                             target={method.key === 'email' ? "_self" : "_blank"}
                                             rel="noopener noreferrer"
                                             className="px-4 py-2 rounded-md bg-cyan-500/10 text-cyan-400 text-xs font-bold hover:bg-cyan-500/20 transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
