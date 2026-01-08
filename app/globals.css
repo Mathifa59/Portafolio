@@ -1,28 +1,81 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020617;
-  --foreground: #f8fafc;
-  --neon-blue: #06b6d4;
-  --neon-purple: #8b5cf6;
+  --background: #020617; /* Slate-950 */
+  --foreground: #f8fafc; /* Slate-50 */
+  --neon-blue: #06b6d4;   /* Cyan-500 */
+  --neon-purple: #8b5cf6; /* Violet-500 */
+}
+
+/* --- CONFIGURACIÓN GLOBAL DEL DOCUMENTO --- */
+html {
+  scroll-behavior: smooth; /* Desplazamiento suave entre secciones */
+  overflow-x: hidden;      /* Previene scroll horizontal accidental */
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  
+  /* Evita que el body sea más ancho que la pantalla del dispositivo */
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+  
+  /* --- TU FONDO DE GRID --- */
   background-image: 
+    /* Luz radial superior */
     radial-gradient(circle at 50% -20%, rgba(120, 119, 198, 0.3), rgba(255, 255, 255, 0)),
+    /* Líneas verticales */
     linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px),
+    /* Líneas horizontales */
     linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px);
+    
   background-size: 100% 100%, 40px 40px, 40px 40px;
+  
+  /* CORRECCIÓN AQUÍ: Usamos la propiedad CSS estándar */
+  min-height: 100vh; 
+}
+/* --- SCROLLBAR PERSONALIZADA (Estilo Dark Mode) --- */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
+::-webkit-scrollbar-track {
+  background: #020617; /* Mismo color que el fondo */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b; /* Slate-800 */
+  border-radius: 5px;
+  border: 2px solid #020617; /* Borde para separarlo del track */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155; /* Slate-700 al pasar el mouse */
+}
+
+/* --- COLOR DE SELECCIÓN DE TEXTO --- */
+::selection {
+  background: rgba(6, 182, 212, 0.3); /* Cyan con transparencia */
+  color: #fff;
+}
+
+/* --- UTILIDADES PERSONALIZADAS --- */
 @layer utilities {
   .text-gradient {
     background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  
+  /* Utilidad extra para centrar contenido absoluto fácilmente */
+  .center-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }

@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google"; // <--- 1. Usamos Outfit para el toque amigable
+import { Outfit } from "next/font/google"; 
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/sections/Footer";
 
-// 2. Configuramos la fuente
+// Configuración de la fuente
 const outfit = Outfit({ 
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"], // Cargamos varios pesos para tener flexibilidad
-  variable: "--font-outfit", // Opcional, por si queremos usarla en variables CSS
+  weight: ["300", "400", "500", "600", "700"], 
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
@@ -23,18 +23,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      {/* 3. Aplicamos la clase outfit.className a todo el body */}
-      <body className={`${outfit.className} antialiased bg-slate-950 text-white`}>
+      {/* CORRECCIONES IMPORTANTES AQUÍ:
+         1. Quitamos 'bg-slate-950': Para que NO tape el fondo de grid de tu globals.css.
+         2. Agregamos 'relative': Para asegurar el posicionamiento correcto.
+         3. Agregamos 'overflow-x-hidden': Refuerzo extra de seguridad para móviles.
+      */}
+      <body className={`${outfit.className} antialiased text-slate-50 relative overflow-x-hidden`}>
         
-        {/* Barra de navegación flotante */}
+        {/* Barra de navegación */}
         <Navbar />
         
-        {/* Contenido principal con padding superior para que no lo tape el menú */}
-        <main className="pt-24 min-h-screen">
+        {/* Contenido principal */}
+        {/* pt-24 asegura que el Navbar fijo no tape el inicio de tu web */}
+        <main className="pt-24 min-h-screen flex flex-col">
           {children}
         </main>
 
-        {/* Pie de página global */}
+        {/* Pie de página */}
         <Footer />
         
       </body>
