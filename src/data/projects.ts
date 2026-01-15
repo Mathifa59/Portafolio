@@ -17,7 +17,7 @@ export const projects: Project[] = [
     role: "Co-Founder & CTO",
     description: "Startup de desarrollo de software enfocada en soluciones digitales escalables. Lidero el equipo técnico transformando ideas en productos de alto impacto.",
     tech: ["Next.js", "React", "Tailwind", "Team Leadership"],
-    link: "https://devhorses.com", 
+    link: "https://horses-landing.vercel.app/", 
     image: "/images/DevHorses.png", // <--- ACTUALIZADO (Coincide con tu archivo)
     isFeatured: true
   },
