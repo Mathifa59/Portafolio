@@ -27,7 +27,7 @@ export const projects: Project[] = [
     role: "Frontend Developer",
     description: "Sitio web turístico para un hotel en Cusco. Diseño inmersivo enfocado en la experiencia del usuario y sistema de reservas directo.",
     tech: ["React", "Tailwind", "UX/UI"],
-    link: "https://apugardenlodge.com/",
+    link: "https://mathifa59.github.io/Sumaq/",
     image: "/images/Apu Garden Lodge.png", // <--- ACTUALIZADO (Con espacios, tal cual tu archivo)
     isFeatured: false
   },
@@ -36,10 +36,10 @@ export const projects: Project[] = [
     title: "MV & Abogados",
     role: "Full Stack Developer",
     description: "Plataforma web corporativa para firma legal. Optimización SEO, integración con CRM y diseño profesional para captación de clientes.",
-    tech: ["Next.js", "WordPress", "Analytics"],
-    link: "#", 
+    tech: ["Next.js", "TypeScript", "Analytics"],
+    link: "https://mv-abogados.vercel.app/", 
     // Como no tienes imagen específica para MV, usamos DevHorses o una genérica por ahora
-    image: "/images/DevHorses.png", 
+    image: "/images/MVAbogados.png", // <--- ACTUALIZADO (Con espacios, tal cual tu archivo)
     isFeatured: false
   }
 ];
