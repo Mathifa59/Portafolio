@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google"; 
+import { Inter, JetBrains_Mono } from "next/font/google"; 
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/sections/Footer";
 
-// Configuración de la fuente
-const outfit = Outfit({ 
+// Configuración de las fuentes
+const inter = Inter({ 
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"], 
-  variable: "--font-outfit",
+  variable: "--font-inter",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
 });
 
 export const metadata: Metadata = {
-  title: "Mathias Vasquez | Desarrollador Full Stack",
-  description: "Portafolio profesional de Mathias Vasquez - Software Engineer & Founder.",
+  title: "Mathias Vasquez | Desarrollador de Software",
+  description: "Portafolio de Mathias Vasquez, desarrollador de software construyendo sistemas digitales que escalan.",
 };
 
 export default function RootLayout({
@@ -23,23 +27,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      {/* CORRECCIONES IMPORTANTES AQUÍ:
-         1. Quitamos 'bg-slate-950': Para que NO tape el fondo de grid de tu globals.css.
-         2. Agregamos 'relative': Para asegurar el posicionamiento correcto.
-         3. Agregamos 'overflow-x-hidden': Refuerzo extra de seguridad para móviles.
-      */}
-      <body className={`${outfit.className} antialiased text-slate-50 relative overflow-x-hidden`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased text-gray-100 relative overflow-x-hidden`}>
         
-        {/* Barra de navegación */}
+        {/* Barra de navegación flotante */}
         <Navbar />
         
-        {/* Contenido principal */}
-        {/* pt-24 asegura que el Navbar fijo no tape el inicio de tu web */}
-        <main className="pt-24 min-h-screen flex flex-col">
+        {/* Contenido principal de la One-Page */}
+        <main className="min-h-screen flex flex-col selection:bg-emerald-500/30">
           {children}
         </main>
 
-        {/* Pie de página */}
         <Footer />
         
       </body>

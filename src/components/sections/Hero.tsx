@@ -1,146 +1,123 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin } from "lucide-react";
-import Link from "next/link";
+import { ArrowDown, Github, Linkedin, Download } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Hero() {
   return (
-    // CAMBIO 1: Reduje el padding vertical en móvil (py-12) y mantuve el grande en PC (md:py-20)
-    // CAMBIO 2: 'overflow-hidden' evita que animaciones rompan el ancho del móvil
-    <section id="inicio" className="min-h-screen flex items-center justify-center px-6 md:px-20 py-12 md:py-20 max-w-7xl mx-auto overflow-hidden">
+    <section id="inicio" className="min-h-[100svh] flex items-center justify-center px-6 md:px-12 pt-32 lg:pt-40 pb-20 max-w-7xl mx-auto overflow-hidden relative">
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 items-center w-full">
+      {/* Luz de fondo animada */}
+      <motion.div 
+        animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3] 
+        }}
+        transition={{ 
+            duration: 8, 
+            repeat: Infinity,
+            ease: "easeInOut" 
+        }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none -z-10" 
+      />
+
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-center w-full mt-10 md:mt-0">
         
         {/* COLUMNA IZQUIERDA: TEXTO */}
-        {/* CAMBIO 3: 'order-2' en móvil pone el texto DEBAJO de la foto. 'md:order-1' lo pone a la izquierda en PC. */}
-        {/* CAMBIO 4: 'items-center text-center' en móvil para que todo quede centrado bajo la foto. 'md:items-start' en PC. */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left z-10 order-2 md:order-1">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left z-10 order-2 md:order-1 md:col-span-8">
           
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            // Ajustamos el tamaño del badge en móvil para que no ocupe tanto
-            className="mb-4 px-3 py-1 border border-cyan-500/30 rounded-full bg-cyan-950/30 text-cyan-300 text-xs md:text-sm font-medium"
+            initial={{ opacity: 0, y: -20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="mb-8 px-5 py-2 border border-emerald-500/30 rounded-full bg-emerald-950/20 text-emerald-400 text-xs md:text-sm font-mono flex items-center gap-3 backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.15)]"
           >
-            Disponible para proyectos 🚀
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Available for new opportunities
           </motion.div>
 
-          <motion.h1 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            // CAMBIO 5: Reduje el texto base a 'text-4xl' en móvil (antes 5xl) para que quepa bien en pantallas angostas.
-            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight flex flex-col justify-center"
-          >
-            <span>Hola, soy</span>
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-500 whitespace-nowrap pb-2">
-              <Typewriter text="Mathias Vasquez" />
-            </span>
-          </motion.h1>
+          {/* Animación escalonada para el título */}
+          <div className="overflow-hidden mb-6">
+            <motion.h1 
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
+            >
+              Construyo sistemas digitales que <span className="text-emerald-gradient">escalan negocios.</span>
+            </motion.h1>
+          </div>
 
           <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-gray-400 text-base md:text-lg mb-8 max-w-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-gray-400 text-base md:text-lg mb-12 max-w-2xl leading-relaxed"
           >
-            Desarrollador Full Stack transformando ideas en realidad digital. 
-            Especialista en React, Next.js y soluciones modernas.
+            Desarrollo web, software a medida y estrategia digital para startups y empresas que necesitan resultados reales. Menos estética vacía, más ingeniería que funciona.
           </motion.p>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            // Centramos los botones en móvil
-            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center"
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto"
           >
-            <Link href="/proyectos" className="px-6 py-3 bg-white text-black font-bold rounded-lg hover:scale-105 transition-transform flex items-center justify-center gap-2 w-full sm:w-auto">
-              Ver Mis Trabajos <ArrowRight size={18} />
-            </Link>
+            <a href="#proyectos" className="px-8 py-4 border border-white/10 bg-white text-black font-semibold rounded-xl hover:bg-gray-200 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 w-full sm:w-auto shadow-[0_0_30px_rgba(255,255,255,0.15)] group">
+              Ver proyectos <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />
+            </a>
             
-            <div className="flex gap-3 justify-center">
-               <SocialButton href="https://github.com/Mathifa59" icon={<Github />} />
-               <SocialButton href="https://www.linkedin.com/in/mathias-vasquez/" icon={<Linkedin />} />
-            </div>
+            <a href="/Mathias Vasquez CV.pdf" target="_blank" className="px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-xl hover:bg-white/10 hover:border-white/20 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 w-full sm:w-auto group">
+              <Download size={18} className="text-gray-400 group-hover:text-emerald-400 transition-colors" /> CV
+            </a>
           </motion.div>
         </div>
 
         {/* COLUMNA DERECHA: FOTO */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="relative flex justify-center md:justify-end z-10 order-1 md:order-2"
+          initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+          className="relative flex justify-center md:justify-end z-10 order-1 md:order-2 md:col-span-4"
         >
-          {/* CAMBIO 6: Tamaño de imagen RESPONSIVE. 
-              - w-48 (192px) en móvil: Pequeño y elegante.
-              - w-64 (256px) en tablet.
-              - w-96 (384px) en PC: Grande e imponente.
-          */}
-          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 rounded-full p-1 bg-linear-to-tr from-cyan-400 via-purple-500 to-transparent">
-            <div className="relative w-full h-full rounded-full overflow-hidden bg-slate-900 border-4 border-slate-900">
+          {/* Animación flotante continua */}
+          <motion.div 
+            animate={{ y: [-10, 10, -10] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="relative w-52 h-52 sm:w-64 sm:h-64 lg:w-80 lg:h-80"
+          >
+            {/* Anillo exterior decorativo que gira */}
+            <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-4 border border-dashed border-emerald-500/20 rounded-full -z-20"
+            />
+
+            {/* Panel de cristal de fondo */}
+            <div className="absolute inset-0 border border-white/10 rounded-2xl rotate-6 scale-105 bg-white/5 backdrop-blur-3xl -z-10 shadow-2xl transition-transform duration-500 hover:rotate-12"></div>
+            
+            <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/20 bg-[#0a0a0a] group shadow-[0_0_50px_rgba(16,185,129,0.1)]">
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none mix-blend-multiply"></div>
+                
                 <Image 
                   src="/images/MathiasVasquez.jpg" 
                   alt="Mathias Vasquez" 
                   fill
                   priority
-                  className="object-cover object-center transform hover:scale-110 transition-transform duration-500" 
+                  className="object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" 
                 />
+                
+                {/* Reflejo de luz */}
+                <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-20 pointer-events-none"></div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
       </div>
     </section>
   );
 }
-
-// --- COMPONENTES AUXILIARES ---
-
-function SocialButton({ icon, href }: { icon: React.ReactNode, href: string }) {
-    return (
-      <a href={href} target="_blank" className="p-3 bg-slate-800/50 border border-white/10 rounded-lg text-white hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all">
-        {icon}
-      </a>
-    )
-}
-
-// Lógica del efecto de escritura
-const Typewriter = ({ text }: { text: string }) => {
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-
-    const handleType = () => {
-      const currentText = displayText;
-      const speed = isDeleting ? 50 : 100;
-
-      if (!isDeleting && currentText === text) {
-        timer = setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && currentText === "") {
-        timer = setTimeout(() => setIsDeleting(false), 500);
-      } else {
-        const nextText = isDeleting 
-          ? currentText.substring(0, currentText.length - 1)
-          : text.substring(0, currentText.length + 1);
-          
-        timer = setTimeout(() => setDisplayText(nextText), speed);
-      }
-    };
-
-    timer = setTimeout(handleType, 100);
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, text]);
-
-  return (
-    <span className="inline-flex items-center">
-      {displayText}
-      <span className="border-r-4 border-cyan-400 ml-1 h-[1em] animate-pulse"></span>
-    </span>
-  );
-};

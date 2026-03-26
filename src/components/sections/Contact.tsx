@@ -1,198 +1,171 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Terminal, Copy, Check, ExternalLink, Send } from "lucide-react";
+import { Send, MapPin, Mail, Loader2, Calendar } from "lucide-react";
+import { useState } from "react";
 
 export default function Contact() {
-  const [copied, setCopied] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText("mathiwen519@gmail.com");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Simular envío
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsSubmitting(false);
+    setSubmitStatus("success");
+    setFormData({ name: "", email: "", message: "" });
+    setTimeout(() => setSubmitStatus("idle"), 3000);
   };
 
-  const contactMethods = [
-    {
-      key: "email",
-      label: "Email",
-      value: "mathiwen519@gmail.com",
-      action: "mailto:mathiwen519@gmail.com",
-      icon: <Mail className="text-cyan-400" size={20} />,
-      color: "hover:border-cyan-500/50 hover:bg-cyan-950/20",
-      isLink: true,
-      btnText: "Enviar Email",
-      btnIcon: <Send size={14} />,
-      canCopy: true
-    },
-    {
-      key: "linkedin",
-      label: "LinkedIn",
-      value: "in/mathias-vasquez",
-      action: "https://www.linkedin.com/in/mathias-vasquez/",
-      icon: <Linkedin className="text-blue-400" size={20} />,
-      color: "hover:border-blue-500/50 hover:bg-blue-950/20",
-      isLink: true,
-      btnText: "Conectar",
-      btnIcon: <ExternalLink size={14} />,
-      canCopy: false
-    },
-    {
-      key: "github",
-      label: "GitHub",
-      value: "github.com/Mathifa59",
-      action: "https://github.com/Mathifa59",
-      icon: <Github className="text-purple-400" size={20} />,
-      color: "hover:border-purple-500/50 hover:bg-purple-950/20",
-      isLink: true,
-      btnText: "Seguir",
-      btnIcon: <ExternalLink size={14} />,
-      canCopy: false
-    }
-  ];
-
   return (
-    // CAMBIOS REALIZADOS:
-    // 1. Quitamos 'bg-slate-950' para que el fondo global se vea.
-    // 2. Quitamos 'min-h-screen', 'flex', 'items-center', 'justify-center'.
-    // 3. Estandarizamos el ancho y padding: 'max-w-7xl mx-auto px-6 md:px-12'.
-    <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+    <section id="contacto" className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       
-      {/* Quitamos el 'max-w-5xl' interno para que aproveche el espacio igual que las otras secciones */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
         
-        {/* COLUMNA IZQUIERDA: TEXTO */}
-        <div className="space-y-8">
-            <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
+        {/* COLUMNA IZQUIERDA: TEXTO E INFO */}
+        <div className="space-y-10">
+          <div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight"
             >
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-cyan-400 text-sm font-mono mb-6">
+              Hablemos de negocios. Construyamos algo <span className="text-emerald-500">eficiente</span>.
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-gray-400 text-lg leading-relaxed max-w-lg"
+            >
+              Siempre estoy interesado en resolver problemas técnicos complejos, roles de ingeniería de software o consultorías. Escríbeme y agendamos una llamada.
+            </motion.p>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="space-y-6"
+          >
+            <div className="flex items-center gap-4 group cursor-default">
+              <div className="w-12 h-12 rounded-xl bg-[#111] border border-white/10 flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
+                <Mail className="text-gray-400 group-hover:text-emerald-500 transition-colors" size={20} />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500 font-mono mb-1">Email</p>
+                <a href="mailto:mathiwen519@gmail.com" className="text-white font-medium hover:text-emerald-400 transition-colors">
+                  mathiwen519@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 group cursor-default">
+              <div className="w-12 h-12 rounded-xl bg-[#111] border border-white/10 flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
+                <MapPin className="text-gray-400 group-hover:text-emerald-500 transition-colors" size={20} />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500 font-mono mb-1">Base</p>
+                <p className="text-white font-medium">Lima, Perú (Disponible remoto)</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 group cursor-default">
+              <div className="w-12 h-12 rounded-xl bg-[#111] border border-white/10 flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
+                <Calendar className="text-gray-400 group-hover:text-emerald-500 transition-colors" size={20} />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500 font-mono mb-1">Disponibilidad</p>
+                <p className="text-emerald-400 font-medium flex items-center gap-2">
                     <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
-                    Status: Available for work
-                </div>
-                
-                <h2 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
-                    Vamos a <br />
-                    <span className="text-transparent bg-clip-text bg-linear-to-r from-green-400 to-cyan-500">
-                        Hackear el Futuro
-                    </span>
-                </h2>
-                
-                <p className="text-gray-400 text-lg max-w-md leading-relaxed">
-                    ¿Tienes un proyecto en mente o quieres colaborar en algo innovador? 
-                    Mi terminal siempre está abierta para nuevas ideas. Inicialicemos una conversación.
+                    Aceptando nuevos roles
                 </p>
-            </motion.div>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
-        {/* COLUMNA DERECHA: TERMINAL */}
+        {/* COLUMNA DERECHA: FORMULARIO */}
         <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-full"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-            <div className="rounded-xl overflow-hidden bg-[#0d1117] border border-white/10 shadow-2xl font-mono text-sm">
-                
-                {/* Header Terminal */}
-                <div className="bg-[#161b22] px-4 py-3 flex items-center justify-between border-b border-white/5">
-                    <div className="flex gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                        <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                        <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                    </div>
-                    <div className="text-gray-500 text-xs flex items-center gap-2">
-                        <Terminal size={12} />
-                        contact.tsx — mathias-portfolio
-                    </div>
-                    <div className="w-10" />
+          <form onSubmit={handleSubmit} className="bg-[#111] border border-white/10 p-8 md:p-10 rounded-2xl relative overflow-hidden">
+            
+            <div className="absolute top-0 right-0 w-full h-1 bg-linear-to-r from-transparent via-emerald-500/50 to-transparent" />
+
+            <div className="space-y-6 relative z-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium text-gray-400">Nombre</label>
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    className="w-full bg-[#050505] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-hidden focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all font-mono text-sm"
+                    placeholder="John Doe"
+                  />
                 </div>
-
-                {/* Body Terminal */}
-                <div className="p-6 space-y-6">
-                    
-                    {/* Comando Simulado */}
-                    <div className="flex gap-2 text-gray-400">
-                        <span className="text-pink-400">$</span>
-                        <span className="text-yellow-200">npx</span>
-                        <span className="text-white">init-connection</span>
-                        <span className="text-gray-500">--with=Mathias</span>
-                    </div>
-
-                    {/* Lista de Métodos */}
-                    <div className="space-y-3 pl-4 border-l-2 border-white/10">
-                        {contactMethods.map((method, index) => (
-                            <motion.div
-                                key={method.key}
-                                initial={{ opacity: 0, x: 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: index * 0.2 + 0.5 }}
-                                className={`group p-4 rounded-lg bg-white/5 border border-white/5 transition-all duration-300 ${method.color}`}
-                            >
-                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                                    {/* Info Izquierda */}
-                                    <div className="flex items-center gap-4">
-                                        <div className="p-2 rounded-md bg-slate-950 border border-white/10 group-hover:scale-110 transition-transform">
-                                            {method.icon}
-                                        </div>
-                                        <div>
-                                            <p className="text-xs text-gray-500 mb-0.5">{method.label}</p>
-                                            <div className="flex items-center gap-2">
-                                                <p className="text-cyan-100 font-medium break-all">{method.value}</p>
-                                                
-                                                {/* BOTÓN DE COPIADO RÁPIDO */}
-                                                {method.canCopy && (
-                                                    <button 
-                                                        onClick={handleCopy}
-                                                        className="p-1 hover:bg-white/10 rounded text-gray-500 hover:text-white transition-colors"
-                                                        title="Copiar dirección"
-                                                    >
-                                                        {copied ? <Check size={12} className="text-green-400"/> : <Copy size={12}/>}
-                                                    </button>
-                                                )}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Botón de Acción Principal */}
-                                    {method.isLink ? (
-                                        <a 
-                                            href={method.action as string} 
-                                            target={method.key === 'email' ? "_self" : "_blank"}
-                                            rel="noopener noreferrer"
-                                            className="px-4 py-2 rounded-md bg-cyan-500/10 text-cyan-400 text-xs font-bold hover:bg-cyan-500/20 transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
-                                        >
-                                            {method.btnText} {method.btnIcon}
-                                        </a>
-                                    ) : (
-                                        <button 
-                                            className="px-4 py-2 rounded-md bg-white/5 text-gray-300 text-xs font-bold hover:bg-white/10 hover:text-white transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
-                                        >
-                                            {method.btnText} {method.btnIcon}
-                                        </button>
-                                    )}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    <div className="flex items-center gap-2 mt-4">
-                        <span className="text-green-400">✔</span>
-                        <span className="text-gray-500">Connection established successfully.</span>
-                        <motion.span 
-                            animate={{ opacity: [0, 1, 0] }} 
-                            transition={{ repeat: Infinity, duration: 0.8 }}
-                            className="w-2 h-4 bg-cyan-500"
-                        />
-                    </div>
-
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium text-gray-400">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-full bg-[#050505] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-hidden focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all font-mono text-sm"
+                    placeholder="john@empresa.com"
+                  />
                 </div>
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-sm font-medium text-gray-400">Mensaje</label>
+                <textarea
+                  id="message"
+                  required
+                  rows={5}
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  className="w-full bg-[#050505] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-hidden focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all resize-none font-mono text-sm"
+                  placeholder="Detalles sobre el rol o proyecto..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-gray-200 transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" />
+                    Enviando...
+                  </>
+                ) : submitStatus === "success" ? (
+                  "¡Mensaje Enviado!"
+                ) : (
+                  <>
+                    Enviar mensaje
+                    <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </>
+                )}
+              </button>
             </div>
+          </form>
         </motion.div>
 
       </div>

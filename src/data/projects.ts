@@ -3,6 +3,9 @@ export interface Project {
   title: string;
   role: string;
   description: string;
+  problem: string;
+  solution: string;
+  result: string;
   tech: string[];
   link: string;
   github?: string;
@@ -13,33 +16,41 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "DevHorses Startup",
-    role: "Co-Founder & CTO",
-    description: "Startup de desarrollo de software enfocada en soluciones digitales escalables. Lidero el equipo técnico transformando ideas en productos de alto impacto.",
-    tech: ["Next.js", "React", "Tailwind", "Team Leadership"],
-    link: "https://horses-landing.vercel.app/", 
-    image: "/images/DevHorses.png", // <--- ACTUALIZADO (Coincide con tu archivo)
+    title: "MV & Abogados",
+    role: "Full Stack Developer",
+    description: "Plataforma web corporativa para firma legal con optimización SEO e integración CRM.",
+    problem: "Firma legal tradicional sin presencia digital efectiva ni canal de captación de clientes online predecible.",
+    solution: "Arquitectura Next.js optimizada para Core Web Vitals, estructuración SEO on-page y campañas de Meta/Google Ads integradas con un CRM.",
+    result: "45% de tasa de conversión de leads y posicionamiento en primera página de Google para términos locales clave.",
+    tech: ["Next.js", "TypeScript", "Tailwind", "Analytics"],
+    link: "https://mv-abogados.vercel.app/", 
+    image: "/images/MVAbogados.png",
     isFeatured: true
   },
   {
     id: 2,
     title: "Apu Garden Lodge",
     role: "Frontend Developer",
-    description: "Sitio web turístico para un hotel en Cusco. Diseño inmersivo enfocado en la experiencia del usuario y sistema de reservas directo.",
+    description: "Plataforma de reservas directas para hotel boutique en Cusco.",
+    problem: "Alta dependencia de OTAs (Booking, Expedia) con comisiones del 15-20% por reserva y nula identidad visual propia.",
+    solution: "Desarrollo de sitio web inmersivo con sistema de reservas directo, pasarela de pagos y experiencia fluida orientada al turista internacional.",
+    result: "Creación de un canal de venta directa libre de comisiones y mejora en la percepción de marca premium.",
     tech: ["React", "Tailwind", "UX/UI"],
     link: "https://mathifa59.github.io/Sumaq/",
-    image: "/images/Apu Garden Lodge.png", // <--- ACTUALIZADO (Con espacios, tal cual tu archivo)
+    image: "/images/Apu Garden Lodge.png",
     isFeatured: false
   },
   {
     id: 3,
-    title: "MV & Abogados",
-    role: "Full Stack Developer",
-    description: "Plataforma web corporativa para firma legal. Optimización SEO, integración con CRM y diseño profesional para captación de clientes.",
-    tech: ["Next.js", "TypeScript", "Analytics"],
-    link: "https://mv-abogados.vercel.app/", 
-    // Como no tienes imagen específica para MV, usamos DevHorses o una genérica por ahora
-    image: "/images/MVAbogados.png", // <--- ACTUALIZADO (Con espacios, tal cual tu archivo)
+    title: "DevHorses",
+    role: "Co-Founder & CTO",
+    description: "Agencia de desarrollo de software enfocada en MVPs y escalamiento técnico.",
+    problem: "Emprendedores locales con ideas válidas pero incapacidad de ejecutar y escalar productos de software robustos.",
+    solution: "Fundé DevHorses para proveer ingeniería como servicio. Lidero la arquitectura, el diseño de bases de datos y la entrega continua de productos.",
+    result: "Construcción exitosa de múltiples proyectos para clientes, desde la validación del concepto hasta el despliegue en producción.",
+    tech: ["Next.js", "Node.js", "Architecture", "Leadership"],
+    link: "https://horses-landing.vercel.app/", 
+    image: "/images/DevHorses.png",
     isFeatured: false
   }
 ];
