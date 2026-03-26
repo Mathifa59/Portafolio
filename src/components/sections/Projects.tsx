@@ -161,7 +161,7 @@ function FeaturedCard({ project }: { project: Project }) {
                     src={project.image} 
                     alt={project.title} 
                     fill
-                    className="object-cover object-top"
+                    className="object-cover object-center"
                 />
             </div>
         </div>
