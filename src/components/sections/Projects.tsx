@@ -26,7 +26,7 @@ export default function Projects() {
   const technicalProjects = projects.filter(p => p.category === "technical");
 
   return (
-    <section id="proyectos" className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <section id="proyectos" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
       
       <div className="mb-16">
         <motion.h2 
@@ -142,20 +142,20 @@ function FeaturedCard({ project }: { project: Project }) {
       <div className="grid grid-cols-1 xl:grid-cols-2">
         
         {/* Lado Izquierdo: Info */}
-        <div className="p-8 md:p-14 flex flex-col justify-center border-b xl:border-b-0 xl:border-r border-white/10 relative z-10">
+        <div className="p-6 sm:p-8 md:p-14 flex flex-col justify-center border-b xl:border-b-0 xl:border-r border-white/10 relative z-10">
           
-          <div className="flex items-center gap-3 mb-8">
-             <span className="px-4 py-1.5 rounded-full text-xs font-mono font-bold bg-white/5 text-emerald-400 uppercase tracking-widest border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+          <div className="flex items-center gap-3 mb-6 sm:mb-8">
+             <span className="px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-mono font-bold bg-white/5 text-emerald-400 uppercase tracking-widest border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
                {project.role}
              </span>
           </div>
           
-          <h3 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-white group-hover:to-emerald-200 transition-all duration-500">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-white group-hover:to-emerald-200 transition-all duration-500">
             {project.title}
           </h3>
           
           {/* Bloques de Problema/Solución/Resultado */}
-          <div className="space-y-8 mb-12">
+          <div className="space-y-6 sm:space-y-8 mb-8 sm:mb-12">
             <motion.div whileHover={{ x: 5 }} className="transition-transform">
               <h4 className="flex items-center gap-2 text-sm font-bold text-gray-300 mb-3 uppercase tracking-wide">
                 <Target size={18} className="text-red-400" /> El Problema
@@ -199,7 +199,7 @@ function FeaturedCard({ project }: { project: Project }) {
         </div>
 
         {/* Lado Derecho: Imagen */}
-        <div className="relative h-[400px] xl:h-auto overflow-hidden bg-[#050505] p-6 md:p-12 flex items-center justify-center">
+        <div className="relative h-[250px] sm:h-[350px] xl:h-auto overflow-hidden bg-[#050505] p-4 sm:p-6 md:p-12 flex items-center justify-center">
             <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none xl:hidden" />
             
             {/* Contenedor de "dispositivo" para la imagen con perspectiva 3D al hover */}
@@ -228,7 +228,7 @@ function StandardCard({ project }: { project: Project }) {
       <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       {/* Miniatura del proyecto */}
-      <div className="relative h-48 w-full overflow-hidden border-b border-white/10">
+      <div className="relative h-40 sm:h-48 w-full overflow-hidden border-b border-white/10">
         <Image 
           src={project.image} 
           alt={project.title} 
@@ -238,13 +238,13 @@ function StandardCard({ project }: { project: Project }) {
         <div className="absolute inset-0 bg-linear-to-t from-[#111] via-transparent to-transparent" />
       </div>
 
-      <div className="p-8 md:p-10 flex flex-col h-full relative z-10">
-        <div className="flex justify-between items-start mb-8">
-            <div>
-                <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest mb-4 block">
+      <div className="p-6 sm:p-8 md:p-10 flex flex-col h-full relative z-10">
+        <div className="flex justify-between items-start mb-6 sm:mb-8">
+            <div className="min-w-0 flex-1">
+                <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest mb-3 sm:mb-4 block">
                     {project.role}
                 </span>
-                <h4 className="text-2xl font-bold text-white truncate pr-4 group-hover:text-emerald-300 transition-colors">
+                <h4 className="text-xl sm:text-2xl font-bold text-white pr-4 group-hover:text-emerald-300 transition-colors wrap-break-word">
                     {project.title}
                 </h4>
             </div>
@@ -253,13 +253,13 @@ function StandardCard({ project }: { project: Project }) {
             </a>
         </div>
         
-        <p className="text-gray-400 text-base mb-8 leading-relaxed">
+        <p className="text-gray-400 text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed">
           {project.description}
         </p>
 
         {/* Highlight Result if available */}
-        <div className="mb-8 mt-auto p-4 bg-white/5 border border-white/10 rounded-xl group-hover:bg-emerald-500/5 group-hover:border-emerald-500/20 transition-colors">
-            <p className="text-sm text-gray-300"><strong className="text-white">Impacto:</strong> {project.result}</p>
+        <div className="mb-6 sm:mb-8 mt-auto p-3 sm:p-4 bg-white/5 border border-white/10 rounded-xl group-hover:bg-emerald-500/5 group-hover:border-emerald-500/20 transition-colors">
+            <p className="text-xs sm:text-sm text-gray-300"><strong className="text-white">Impacto:</strong> {project.result}</p>
         </div>
 
         <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">

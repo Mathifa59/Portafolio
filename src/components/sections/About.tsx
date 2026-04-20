@@ -31,7 +31,7 @@ export default function About() {
   ];
 
   return (
-    <section id="sobre-mi" className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+    <section id="sobre-mi" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-center">
         
@@ -87,7 +87,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="order-1 md:order-2 perspective-1000"
         >
-          <div className="bg-[#111] border border-white/10 rounded-3xl p-8 lg:p-10 relative overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-default transition-transform duration-700 hover:rotate-y-1 hover:rotate-x-1">
+          <div className="bg-[#111] border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-default transition-transform duration-700 hover:rotate-y-1 hover:rotate-x-1">
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[100px] -z-10 group-hover:bg-emerald-500/10 transition-colors duration-1000 translate-x-1/2 -translate-y-1/2" />
             
             <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
@@ -99,7 +99,7 @@ export default function About() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-100px" }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4"
             >
               {technologies.map((tech) => (
                 <motion.div

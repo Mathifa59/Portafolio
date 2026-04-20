@@ -27,10 +27,10 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative pt-10 pb-10 px-6 md:px-12 border-t border-white/5 bg-[#050505]">
+    <footer className="relative pt-10 pb-10 px-4 sm:px-6 md:px-12 border-t border-white/5 bg-[#050505]">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         
-        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-sm text-gray-500">
+        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-xs sm:text-sm text-gray-500 text-center">
           <p className="font-mono">© {new Date().getFullYear()} Mathias Vasquez</p>
           <span className="hidden md:inline text-gray-700">|</span>
           <p>Diseñado e implementado con Next.js & TailwindCSS</p>

@@ -39,7 +39,7 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experiencia" className="py-24 px-6 md:px-12 max-w-4xl mx-auto">
+    <section id="experiencia" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto">
       
       {/* TÍTULO ESTILO TERMINAL */}
       <motion.div 
@@ -90,7 +90,7 @@ export default function Experience() {
               </motion.div>
 
               {/* TARJETA DE EXPERIENCIA */}
-              <div className={`relative flex flex-col md:flex-row gap-6 p-6 md:p-8 rounded-2xl border ${exp.color} ${exp.hoverColor} transition-all duration-500 w-full bg-[#111] overflow-hidden`}>
+              <div className={`relative flex flex-col md:flex-row gap-4 sm:gap-6 p-5 sm:p-6 md:p-8 rounded-2xl border ${exp.color} ${exp.hoverColor} transition-all duration-500 w-full bg-[#111] overflow-hidden`}>
                 
                 {/* Overlay de hover sutil */}
                 <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

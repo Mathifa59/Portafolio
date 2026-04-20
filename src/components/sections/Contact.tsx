@@ -11,16 +11,38 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simular envío
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setSubmitStatus("success");
-    setFormData({ name: "", email: "", message: "" });
-    setTimeout(() => setSubmitStatus("idle"), 3000);
+    
+    try {
+      const form = new FormData();
+      form.append("access_key", "75650892-05e1-4e7b-802d-796b232c1420");
+      form.append("name", formData.name);
+      form.append("email", formData.email);
+      form.append("message", formData.message);
+      form.append("subject", `Nuevo mensaje de ${formData.name} desde tu portafolio`);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: form
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus("idle"), 4000);
+    }
   };
 
   return (
-    <section id="contacto" className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+    <section id="contacto" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
         
@@ -31,7 +53,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight"
             >
               ¿Tienes un proyecto en mente? <span className="text-emerald-500">Conversemos.</span>
             </motion.h2>
@@ -112,7 +134,7 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <form onSubmit={handleSubmit} className="bg-[#111] border border-white/10 p-8 md:p-10 rounded-2xl relative overflow-hidden">
+          <form onSubmit={handleSubmit} className="bg-[#111] border border-white/10 p-6 sm:p-8 md:p-10 rounded-2xl relative overflow-hidden">
             
             <div className="absolute top-0 right-0 w-full h-1 bg-linear-to-r from-transparent via-emerald-500/50 to-transparent" />
 

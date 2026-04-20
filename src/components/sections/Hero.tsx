@@ -1,12 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Download } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="min-h-svh flex items-center justify-center px-6 md:px-12 pt-32 lg:pt-40 pb-20 max-w-7xl mx-auto overflow-hidden relative">
+    <section id="inicio" className="min-h-svh flex items-center justify-center px-4 sm:px-6 md:px-12 pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 max-w-7xl mx-auto overflow-hidden relative">
       
       {/* Luz de fondo animada */}
       <motion.div 
