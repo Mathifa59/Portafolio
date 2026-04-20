@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Send, MapPin, Mail, Loader2, Calendar } from "lucide-react";
+import { Send, MapPin, Mail, Loader2, Calendar, Phone } from "lucide-react";
 import { useState } from "react";
 
 export default function Contact() {
@@ -33,7 +33,7 @@ export default function Contact() {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight"
             >
-              Hablemos de negocios. Construyamos algo <span className="text-emerald-500">eficiente</span>.
+              ¿Tienes un proyecto en mente? <span className="text-emerald-500">Conversemos.</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ export default function Contact() {
               transition={{ delay: 0.1 }}
               className="text-gray-400 text-lg leading-relaxed max-w-lg"
             >
-              Siempre estoy interesado en resolver problemas técnicos complejos, roles de ingeniería de software o consultorías. Escríbeme y agendamos una llamada.
+              Ya sea un rol de ingeniería, una consultoría técnica o un producto que necesita salir al mercado — me interesa escucharte. Sin compromiso, solo una conversación para ver si hay fit.
             </motion.p>
           </div>
 
@@ -61,6 +61,18 @@ export default function Contact() {
                 <p className="text-sm text-gray-500 font-mono mb-1">Email</p>
                 <a href="mailto:mathiwen519@gmail.com" className="text-white font-medium hover:text-emerald-400 transition-colors">
                   mathiwen519@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 group cursor-default">
+              <div className="w-12 h-12 rounded-xl bg-[#111] border border-white/10 flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
+                <Phone className="text-gray-400 group-hover:text-emerald-500 transition-colors" size={20} />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500 font-mono mb-1">WhatsApp</p>
+                <a href="https://wa.me/51981916198" target="_blank" className="text-white font-medium hover:text-emerald-400 transition-colors">
+                  +51 981 916 198
                 </a>
               </div>
             </div>
@@ -86,7 +98,7 @@ export default function Contact() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
-                    Aceptando nuevos roles
+                    Abierto a nuevas oportunidades
                 </p>
               </div>
             </div>
@@ -159,7 +171,7 @@ export default function Contact() {
                   "¡Mensaje Enviado!"
                 ) : (
                   <>
-                    Enviar mensaje
+                    Iniciar conversación
                     <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </>
                 )}

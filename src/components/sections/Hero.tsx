@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="min-h-[100svh] flex items-center justify-center px-6 md:px-12 pt-32 lg:pt-40 pb-20 max-w-7xl mx-auto overflow-hidden relative">
+    <section id="inicio" className="min-h-svh flex items-center justify-center px-6 md:px-12 pt-32 lg:pt-40 pb-20 max-w-7xl mx-auto overflow-hidden relative">
       
       {/* Luz de fondo animada */}
       <motion.div 
@@ -37,7 +37,7 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            Available for new opportunities
+            Disponible para proyectos & roles
           </motion.div>
 
           {/* Animación escalonada para el título */}
@@ -48,7 +48,7 @@ export default function Hero() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
             >
-              Construyo sistemas digitales que <span className="text-emerald-gradient">escalan negocios.</span>
+              De idea a producto en <span className="text-emerald-gradient">semanas, no meses.</span>
             </motion.h1>
           </div>
 
@@ -58,7 +58,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-gray-400 text-base md:text-lg mb-12 max-w-2xl leading-relaxed"
           >
-            Desarrollo web, software a medida y estrategia digital para startups y empresas que necesitan resultados reales. Menos estética vacía, más ingeniería que funciona.
+            Full Stack Developer & Founder de <span className="text-emerald-400">DevHorses</span>. Diseño arquitecturas en Next.js, Node y TypeScript que ya generan conversiones reales para firmas legales, hoteles y startups en LATAM.
           </motion.p>
 
           <motion.div 
@@ -68,11 +68,11 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto"
           >
             <a href="#proyectos" className="px-8 py-4 border border-white/10 bg-white text-black font-semibold rounded-xl hover:bg-gray-200 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 w-full sm:w-auto shadow-[0_0_30px_rgba(255,255,255,0.15)] group">
-              Ver proyectos <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />
+              Ver casos de éxito <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />
             </a>
             
             <a href="/Mathias Vasquez CV.pdf" target="_blank" className="px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-xl hover:bg-white/10 hover:border-white/20 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 w-full sm:w-auto group">
-              <Download size={18} className="text-gray-400 group-hover:text-emerald-400 transition-colors" /> CV
+              <Download size={18} className="text-gray-400 group-hover:text-emerald-400 transition-colors" /> Descargar CV
             </a>
           </motion.div>
         </div>

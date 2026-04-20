@@ -1,7 +1,7 @@
 "use client";
 import { motion, Variants } from "framer-motion";
 import { projects, Project } from "@/data/projects"; 
-import { ExternalLink, ArrowRight, Code2, LineChart, Target } from "lucide-react";
+import { ExternalLink, ArrowRight, Code2, LineChart, Target, Briefcase, Terminal } from "lucide-react";
 import Image from "next/image";
 
 // Variantes para la animación en cascada (Stagger)
@@ -22,7 +22,8 @@ const itemVariants: Variants = {
 
 export default function Projects() {
   const featuredProject = projects.find(p => p.isFeatured) || projects[0];
-  const standardProjects = projects.filter(p => !p.isFeatured);
+  const businessProjects = projects.filter(p => p.category === "business" && !p.isFeatured);
+  const technicalProjects = projects.filter(p => p.category === "technical");
 
   return (
     <section id="proyectos" className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
@@ -43,38 +44,84 @@ export default function Projects() {
           transition={{ delay: 0.2 }}
           className="text-gray-400 text-lg max-w-2xl leading-relaxed"
         >
-          Sistemas construidos para resolver cuellos de botella reales y generar crecimiento cuantificable en los negocios.
+          Cada proyecto resuelve un problema real. Aquí está la evidencia.
         </motion.p>
       </div>
 
-      {/* --- SECCIÓN 1: PROYECTO PRINCIPAL (CON VERDADERO ROI) --- */}
+      {/* --- SECCIÓN 1: PROYECTO PRINCIPAL --- */}
       <div className="mb-24">
         <FeaturedCard project={featuredProject} />
       </div>
 
-      {/* --- SECCIÓN 2: OTROS PROYECTOS --- */}
-      <div>
-        <motion.h3 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-2xl font-bold text-white mb-10 border-b border-white/10 pb-4"
-        >
-          Más Proyectos
-        </motion.h3>
-        
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-        >
-          {standardProjects.map((project) => (
-            <StandardCard key={project.id} project={project} />
-          ))}
-        </motion.div>
-      </div>
+      {/* --- SECCIÓN 2: SOLUCIONES PARA NEGOCIOS --- */}
+      {businessProjects.length > 0 && (
+        <div className="mb-24">
+          <motion.h3 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl font-bold text-white mb-3 flex items-center gap-3"
+          >
+            <Briefcase size={22} className="text-emerald-400" /> Soluciones para Negocios
+          </motion.h3>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-gray-500 text-sm mb-10 border-b border-white/10 pb-4"
+          >
+            Productos que generan ingresos, reducen costos o abren canales de venta.
+          </motion.p>
+          
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          >
+            {businessProjects.map((project) => (
+              <StandardCard key={project.id} project={project} />
+            ))}
+          </motion.div>
+        </div>
+      )}
+
+      {/* --- SECCIÓN 3: PROYECTOS TÉCNICOS --- */}
+      {technicalProjects.length > 0 && (
+        <div>
+          <motion.h3 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl font-bold text-white mb-3 flex items-center gap-3"
+          >
+            <Terminal size={22} className="text-blue-400" /> Proyectos Técnicos
+          </motion.h3>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-gray-500 text-sm mb-10 border-b border-white/10 pb-4"
+          >
+            Arquitectura, liderazgo técnico y sistemas construidos desde cero.
+          </motion.p>
+          
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          >
+            {technicalProjects.map((project) => (
+              <StandardCard key={project.id} project={project} />
+            ))}
+          </motion.div>
+        </div>
+      )}
 
     </section>
   );
@@ -179,6 +226,17 @@ function StandardCard({ project }: { project: Project }) {
       className="group flex flex-col rounded-3xl bg-[#111] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 overflow-hidden h-full shadow-lg hover:shadow-[0_10px_40px_rgba(16,185,129,0.1)] relative"
     >
       <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+      {/* Miniatura del proyecto */}
+      <div className="relative h-48 w-full overflow-hidden border-b border-white/10">
+        <Image 
+          src={project.image} 
+          alt={project.title} 
+          fill
+          className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-[#111] via-transparent to-transparent" />
+      </div>
 
       <div className="p-8 md:p-10 flex flex-col h-full relative z-10">
         <div className="flex justify-between items-start mb-8">
