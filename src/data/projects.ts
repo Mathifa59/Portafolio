@@ -38,6 +38,25 @@ export const projects: Project[] = [
     isDemo: false,
   },
   {
+    id: 8,
+    title: "Selekta Food",
+    role: "Full Stack Developer",
+    category: "business",
+    description:
+      "Plataforma web corporativa para empresa agro-tech de clasificación inteligente de frutas con IA orientada al mercado de exportación.",
+    problem:
+      "Empresa con tecnología de clasificación de frutas por IA — capaz de superar la precisión humana — sin presencia digital que transmitiera su propuesta de valor a exportadores agrícolas B2B.",
+    solution:
+      "Desarrollé un sitio corporativo completo con showcase de producto, secciones de servicios y beneficios, blog técnico, dashboard de impacto con métricas y un funnel de captación de demos integrado con WhatsApp y formulario.",
+    result:
+      "Plataforma B2B operativa para el mercado agro-exportador de LATAM. Canal de captación de leads activo con solicitudes de demo desde el lanzamiento.",
+    tech: ["Next.js", "TypeScript", "Tailwind", "SEO", "UX/UI"],
+    link: "https://www.selektafood.com/",
+    image: "/images/selekta-mini.png",
+    isFeatured: false,
+    isDemo: false,
+  },
+  {
     id: 2,
     title: "Apu Garden Lodge",
     role: "Frontend Developer",

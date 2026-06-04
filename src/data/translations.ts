@@ -103,9 +103,9 @@ export const t = {
         },
         {
           quote:
-            "Entregó en semanas lo que otros estudios nos cotizaron en meses. La arquitectura soportó desde el lanzamiento sin caídas.",
-          author: "Cliente DevHorses",
-          role: "Startup · LATAM",
+            "Necesitábamos mostrarle al mercado exportador que nuestra tecnología de IA era real y confiable. El sitio transmite exactamente esa seriedad técnica que buscábamos.",
+          author: "Selekta Food",
+          role: "Agro-Tech · LATAM",
         },
       ],
     },
@@ -236,9 +236,9 @@ export const t = {
         },
         {
           quote:
-            "He delivered in weeks what other studios quoted us in months. The architecture held up from launch without any downtime.",
-          author: "DevHorses Client",
-          role: "Startup · LATAM",
+            "We needed to show the export market that our AI technology was real and trustworthy. The site conveys exactly that technical credibility we were looking for.",
+          author: "Selekta Food",
+          role: "Agro-Tech · LATAM",
         },
       ],
     },
