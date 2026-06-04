@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { Briefcase, Calendar, MapPin, ArrowRight, Rocket } from "lucide-react";
+import Image from "next/image";
 
 const experiences = [
   {
@@ -55,9 +56,109 @@ export default function Experience() {
         <span className="animate-pulse bg-emerald-500/50 w-2.5 h-5 block ml-1" aria-hidden="true" />
       </motion.div>
 
-      <div className="relative ml-3 md:ml-4 pb-12">
+      {/* ── CARD DESTACADA: DevHorses ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="mb-20 group rounded-3xl overflow-hidden bg-[#111] border border-blue-500/20 shadow-2xl relative hover:border-blue-500/40 hover:shadow-[0_0_40px_rgba(59,130,246,0.1)] transition-all duration-500"
+      >
+        {/* Glow de fondo */}
+        <div
+          className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-transparent pointer-events-none"
+          aria-hidden="true"
+        />
+        {/* Línea superior de acento */}
+        <div
+          className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue-500/50 to-transparent"
+          aria-hidden="true"
+        />
 
-        {/* Línea del timeline */}
+        <div className="grid grid-cols-1 xl:grid-cols-2">
+
+          {/* Lado izquierdo: info */}
+          <div className="p-8 md:p-12 flex flex-col justify-center border-b xl:border-b-0 xl:border-r border-white/10 relative z-10">
+
+            {/* Badges */}
+            <div className="flex flex-wrap items-center gap-2 mb-6">
+              <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-widest">
+                Co-Founder &amp; CTO
+              </span>
+              <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-white/5 text-gray-400 border border-white/10 uppercase tracking-widest flex items-center gap-1.5">
+                <Rocket size={10} aria-hidden="true" /> Startup propia
+              </span>
+              <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-widest">
+                2024 – Actualidad
+              </span>
+            </div>
+
+            <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-tight group-hover:text-blue-200 transition-colors duration-500">
+              DevHorses
+            </h3>
+            <p className="text-gray-400 text-base leading-relaxed mb-8">
+              Fundé y lidero <span className="text-white font-medium">DevHorses</span>, estudio de ingeniería de software para startups y negocios en LATAM. Arquitectura de sistemas, diseño de bases de datos, pipelines CI/CD y metodología de entrega iterativa con demos semanales.
+            </p>
+
+            {/* Logros clave */}
+            <ul className="space-y-3 mb-8">
+              {[
+                "Múltiples productos llevados de concepto a producción.",
+                "Reducción del 40% en tiempo de entrega vs. estimaciones de clientes.",
+                "Clientes activos en industrias legal, hospitalidad, agro-tech y retail.",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-gray-400 text-sm">
+                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500/60 shrink-0 group-hover:bg-blue-400 transition-colors" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Stack */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {["Next.js", "Node.js", "PostgreSQL", "Docker", "CI/CD"].map((tech) => (
+                <span
+                  key={tech}
+                  className="text-xs font-mono px-3 py-1.5 bg-black text-gray-300 rounded-md border border-white/10"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href="https://horses-landing.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-blue-500/10 border border-blue-500/30 text-blue-300 text-sm font-bold rounded-xl hover:bg-blue-500/20 hover:border-blue-400/50 transition-all w-fit group/btn"
+            >
+              Ver DevHorses
+              <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" aria-hidden="true" />
+            </a>
+          </div>
+
+          {/* Lado derecho: imagen + stat */}
+          <div className="relative h-52 xl:h-auto overflow-hidden bg-[#050505] p-8 flex items-center justify-center">
+            <div
+              className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent xl:hidden pointer-events-none z-10"
+              aria-hidden="true"
+            />
+            <div className="relative w-full h-full rounded-2xl overflow-hidden ring-1 ring-white/10 transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_20px_50px_rgba(59,130,246,0.15)] z-0">
+              <Image
+                src="/images/dev-horses.png"
+                alt="DevHorses — Estudio de ingeniería de software"
+                fill
+                sizes="(max-width: 1280px) 100vw, 50vw"
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
+
+        </div>
+      </motion.div>
+
+      {/* ── TIMELINE: experiencia en empresas ── */}
+      <div className="relative ml-3 md:ml-4 pb-12">
         <motion.div
           initial={{ height: 0 }}
           whileInView={{ height: "100%" }}
@@ -77,7 +178,6 @@ export default function Experience() {
               transition={{ delay: index * 0.2, duration: 0.6 }}
               className="relative pl-8 md:pl-14 group"
             >
-
               {/* Punto conector */}
               <motion.div
                 initial={{ scale: 0 }}
@@ -122,7 +222,6 @@ export default function Experience() {
                         @{exp.company}
                       </p>
                     </div>
-
                     <div className="text-xs text-gray-400 font-mono text-left md:text-right mt-2 md:mt-0">
                       <div className="flex items-center md:justify-end gap-2 group-hover:text-white transition-colors">
                         <Calendar size={12} className="text-emerald-500/50" aria-hidden="true" />

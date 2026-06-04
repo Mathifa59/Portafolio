@@ -13,7 +13,6 @@ export interface Project {
   link: string;
   github?: string;
   image: string;
-  isFeatured?: boolean;
   isDemo?: boolean;
 }
 
@@ -34,7 +33,6 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Tailwind", "Google Analytics", "SEO"],
     link: "https://mv-abogados.vercel.app/",
     image: "/images/abogados-mini.png",
-    isFeatured: true,
     isDemo: false,
   },
   {
@@ -53,7 +51,6 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Tailwind", "SEO", "UX/UI"],
     link: "https://www.selektafood.com/",
     image: "/images/selekta-mini.png",
-    isFeatured: false,
     isDemo: false,
   },
   {
@@ -72,7 +69,6 @@ export const projects: Project[] = [
     tech: ["React", "Tailwind", "UX/UI", "Pasarela de Pagos"],
     link: "https://apu-garden-lodge.vercel.app/",
     image: "/images/hotel-mini.png",
-    isFeatured: false,
     isDemo: false,
   },
   {
@@ -91,7 +87,6 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Tailwind", "E-commerce"],
     link: "https://demo-retail.vercel.app/",
     image: "/images/mini-retail.png",
-    isFeatured: false,
     isDemo: true,
   },
   {
@@ -110,7 +105,6 @@ export const projects: Project[] = [
     tech: ["React", "Tailwind", "UX/UI", "Responsive"],
     link: "https://demo-restaurante-pasteleria.vercel.app/",
     image: "/images/mini-pasteleria.png",
-    isFeatured: false,
     isDemo: true,
   },
   {
@@ -129,7 +123,6 @@ export const projects: Project[] = [
     tech: ["React", "Tailwind", "Animaciones", "UX/UI"],
     link: "https://demo-restaurante-carnes.vercel.app/",
     image: "/images/mini-fuego.png",
-    isFeatured: false,
     isDemo: true,
   },
   {
@@ -148,26 +141,6 @@ export const projects: Project[] = [
     tech: ["React", "Tailwind", "Landing Page", "Lead Gen"],
     link: "https://demo-gimnasio-eight.vercel.app/",
     image: "/images/gimnasio-mini.png",
-    isFeatured: false,
     isDemo: true,
-  },
-  {
-    id: 7,
-    title: "DevHorses",
-    role: "Co-Founder & CTO",
-    category: "technical",
-    description:
-      "Agencia de ingeniería de software — arquitectura, MVPs y escalamiento técnico para startups.",
-    problem:
-      "Emprendedores con ideas validadas pero sin capacidad técnica para ejecutar: prototipos rotos, deuda técnica desde el día 1, y timelines impredecibles.",
-    solution:
-      "Fundé DevHorses como estudio de ingeniería. Lidero la arquitectura de sistemas, diseño de bases de datos y pipelines CI/CD. Metodología de entrega iterativa con demos semanales.",
-    result:
-      "Múltiples productos llevados de concepto a producción. Reducción promedio de 40% en tiempo de entrega vs. estimaciones iniciales de clientes.",
-    tech: ["Next.js", "Node.js", "PostgreSQL", "Docker", "CI/CD"],
-    link: "https://horses-landing.vercel.app/",
-    image: "/images/dev-horses.png",
-    isFeatured: false,
-    isDemo: false,
   },
 ];
