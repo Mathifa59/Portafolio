@@ -13,6 +13,7 @@ export interface Project {
   link: string;
   github?: string;
   image: string;
+  isFeatured?: boolean;
   isDemo?: boolean;
 }
 
@@ -40,6 +41,7 @@ export const projects: Project[] = [
     title: "Selekta Food",
     role: "Full Stack Developer",
     category: "business",
+    isFeatured: true,
     description:
       "Plataforma web corporativa para empresa agro-tech de clasificación inteligente de frutas con IA orientada al mercado de exportación.",
     problem:
