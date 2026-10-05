@@ -19,28 +19,32 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://mathiasvasquez.dev"; // Actualiza con tu dominio real
+const siteUrl = "https://mathiasvasquez.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Mathias Vasquez | Full Stack Developer",
+    default: "Mathias Vasquez | Generative AI & Backend",
     template: "%s | Mathias Vasquez",
   },
   description:
-    "Full Stack Developer & Founder de DevHorses. Construyo sistemas en Next.js, Node y TypeScript que generan conversiones reales para negocios en LATAM.",
+    "Software Developer enfocado en IA generativa, agentes, backend y búsqueda semántica. Experiencia con Amazon Bedrock, Python, FastAPI y PostgreSQL con pgvector.",
   keywords: [
-    "Full Stack Developer",
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Node.js",
+    "Software Developer",
+    "Generative AI",
+    "AI Agents",
+    "Amazon Bedrock",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "pgvector",
+    "MCP",
     "LATAM",
     "Perú",
     "Lima",
     "DevHorses",
-    "desarrollo web",
-    "software a medida",
+    "backend",
+    "software architecture",
   ],
   authors: [{ name: "Mathias Vasquez", url: siteUrl }],
   creator: "Mathias Vasquez",
@@ -50,22 +54,22 @@ export const metadata: Metadata = {
     alternateLocale: "en_US",
     url: siteUrl,
     siteName: "Mathias Vasquez Portfolio",
-    title: "Mathias Vasquez | Full Stack Developer",
+    title: "Mathias Vasquez | Generative AI & Backend",
     description:
-      "De idea a producto en semanas, no meses. Full Stack Developer & Founder de DevHorses.",
+      "Agentes de IA, servicios backend y búsqueda semántica. Explora mi trabajo y mi experiencia en ingeniería de software.",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Mathias Vasquez - Full Stack Developer",
+        alt: "Mathias Vasquez - Generative AI & Backend",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mathias Vasquez | Full Stack Developer",
-    description: "De idea a producto en semanas, no meses.",
+    title: "Mathias Vasquez | Generative AI & Backend",
+    description: "Software, agentes de IA y arquitectura de sistemas.",
     images: ["/opengraph-image"],
   },
   robots: {
@@ -88,8 +92,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Mathias Vasquez",
-  jobTitle: "Full Stack Developer",
-  description: "Full Stack Developer & Founder de DevHorses",
+  jobTitle: "Software Developer",
+  description:
+    "Software Developer enfocado en Generative AI, backend y arquitectura de sistemas",
   url: siteUrl,
   email: "mathiwen519@gmail.com",
   telephone: "+51981916198",
@@ -103,18 +108,19 @@ const jsonLd = {
     "https://www.linkedin.com/in/mathias-vasquez/",
   ],
   knowsAbout: [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Node.js",
-    "Full Stack Development",
-    "SEO",
+    "Generative AI",
+    "AI Agents",
+    "Amazon Bedrock",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "Semantic Search",
     "System Architecture",
   ],
   worksFor: {
     "@type": "Organization",
     name: "DevHorses",
-    url: "https://horses-landing.vercel.app/",
+    url: "https://www.devhorses.com/",
   },
 };
 
@@ -122,7 +128,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es">
       <head>
         <script
           type="application/ld+json"
@@ -130,14 +136,12 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased text-gray-100 relative overflow-x-hidden`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <LanguageProvider>
           <MotionProvider>
             <Navbar />
-            <main className="min-h-screen flex flex-col selection:bg-emerald-500/30">
-              {children}
-            </main>
+            <main id="main-content">{children}</main>
             <Footer />
           </MotionProvider>
         </LanguageProvider>

@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mathias Vasquez — Portafolio profesional
 
-## Getting Started
+Portafolio enfocado en IA generativa, servicios backend y arquitectura de software. Construido con Next.js 16, React 19, TypeScript, Tailwind CSS 4 y Framer Motion.
 
-First, run the development server:
+## Desarrollo
 
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre `http://localhost:3000`. Para comprobar y ejecutar la versión de producción:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run lint
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contenido
 
-## Learn More
+- `src/data/translations.ts`: textos completos en español e inglés, experiencia, formación y conocimientos.
+- `src/data/projects.ts`: casos técnicos y archivo secundario de proyectos web.
+- `app/page.tsx`: presentación, proyectos, experiencia, enfoque y perfil/contacto.
+- `app/proyectos/[slug]/page.tsx`: páginas estáticas de SINAPSISTENCIA y Agentic workflows.
+- `public/mathias-vasquez-cv.pdf`: CV que se descarga desde la web.
+- `app/globals.css`: diseño responsive y estilos de movimiento reducido.
 
-To learn more about Next.js, take a look at the following resources:
+El idioma se conserva en almacenamiento local y actualiza el atributo `lang` del documento. Las animaciones respetan `prefers-reduced-motion`. La navegación móvil admite cierre con Escape y devuelve el foco al botón del menú.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Los casos se basan en el CV proporcionado. SINAPSISTENCIA distingue el trabajo descrito de la integración futura de LLMs/RAG. El caso de ALIGNET presenta capacidades profesionales, sin código interno ni métricas inventadas. Los diagramas son esquemas simplificados, no demos de sistemas operativos.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Integraciones y publicación
 
-## Deploy on Vercel
+El formulario conserva la integración con Web3Forms, validación nativa, honeypot y estados visibles de envío. Vercel Analytics sigue integrado. El sitio incluye metadatos, datos estructurados, imagen social, sitemap y robots.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Antes de publicar en un dominio distinto, actualiza las URLs en `app/layout.tsx`, `app/sitemap.ts`, `app/robots.ts` y `app/opengraph-image.tsx`. Las traducciones comparten rutas; los metadatos de indexación están en español.

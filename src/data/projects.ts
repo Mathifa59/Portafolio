@@ -1,148 +1,295 @@
-export type ProjectCategory = "business" | "technical";
+import type { Lang } from "./translations";
 
-export interface Project {
-  id: number;
+type CaseCopy = {
   title: string;
-  role: string;
-  category: ProjectCategory;
-  description: string;
-  problem: string;
-  solution: string;
-  result: string;
+  label: string;
+  summary: string;
+  context: string;
+  contributions: string[];
+  decisions: { title: string; text: string }[];
+  implemented: string[];
+  future: string[];
+  implementedLabel: string;
+  futureLabel: string;
+  nodes: { title: string; subtitle: string }[];
+};
+export type TechnicalProject = {
+  slug: string;
+  kind: "thesis" | "experience";
   tech: string[];
-  link: string;
-  github?: string;
-  image: string;
-  isFeatured?: boolean;
-  isDemo?: boolean;
-}
+  content: Record<Lang, CaseCopy>;
+};
 
-export const projects: Project[] = [
+export const technicalProjects: TechnicalProject[] = [
   {
-    id: 1,
-    title: "MV & Abogados",
-    role: "Full Stack Developer",
-    category: "business",
-    description:
-      "Plataforma web corporativa para firma legal con optimización SEO e integración CRM.",
-    problem:
-      "Firma legal con 10+ años de trayectoria pero cero presencia digital. Dependían 100% de referidos boca a boca — sin canal predecible de captación de clientes.",
-    solution:
-      "Diseñé una web en Next.js optimizada para Core Web Vitals (LCP < 1.5s), implementé SEO técnico con schema markup legal, y conecté formularios a un CRM con seguimiento automatizado de leads.",
-    result:
-      "45% de conversión en formularios de contacto. Primera página de Google en 3 términos locales clave en menos de 8 semanas.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "Google Analytics", "SEO"],
-    link: "https://mv-abogados.vercel.app/",
-    image: "/images/abogados-mini.png",
-    isDemo: false,
+    slug: "sinapsistencia",
+    kind: "thesis",
+    tech: [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "pgvector",
+      "Spring Boot",
+      "Angular",
+    ],
+    content: {
+      es: {
+        title: "SINAPSISTENCIA",
+        label: "Tesis · IA & arquitectura de software",
+        summary:
+          "Servicios de IA, búsqueda semántica y una arquitectura que separa interfaz, lógica de negocio y procesamiento de datos.",
+        context:
+          "Proyecto de tesis de Ingeniería de Software, en desarrollo desde enero de 2026. Integra servicios de Machine Learning, recuperación de información y gestión documental en una arquitectura end-to-end.",
+        contributions: [
+          "Diseño de la arquitectura con Angular, Spring Boot, FastAPI y PostgreSQL.",
+          "Implementación de PostgreSQL con pgvector para almacenamiento vectorial y búsqueda por similitud.",
+          "Desarrollo de servicios de IA con Python y FastAPI, y modelos de clasificación de riesgo y recomendación con Random Forest y TF-IDF.",
+          "Diseño e integración de APIs entre servicios de negocio, modelos de IA y gestión documental.",
+        ],
+        decisions: [
+          {
+            title: "Responsabilidades separadas",
+            text: "La interfaz, los servicios de negocio y los servicios de IA tienen componentes diferenciados. Esta separación permite desarrollar cada responsabilidad de forma explícita.",
+          },
+          {
+            title: "Recuperación en PostgreSQL",
+            text: "pgvector incorpora almacenamiento vectorial y búsqueda por similitud a la capa de datos. El proyecto utiliza estas capacidades para recuperación semántica y recomendación.",
+          },
+          {
+            title: "IA detrás de APIs",
+            text: "Python y FastAPI exponen los servicios de IA para integrarlos con los componentes de negocio mediante APIs.",
+          },
+        ],
+        implementedLabel: "Trabajo descrito en el CV",
+        futureLabel: "Dirección de desarrollo",
+        implemented: [
+          "Almacenamiento vectorial y mecanismos de búsqueda semántica.",
+          "Servicios de IA y modelos de clasificación y recomendación.",
+          "Integración de APIs entre los componentes del sistema.",
+        ],
+        future: [
+          "Integración de LLMs y componentes RAG: la arquitectura está preparada para incorporarlos.",
+          "Documentar evaluaciones reproducibles de recuperación y modelos antes de publicar métricas de calidad.",
+        ],
+        nodes: [
+          { title: "Angular", subtitle: "Interfaz" },
+          { title: "Spring Boot", subtitle: "Servicios de negocio" },
+          { title: "FastAPI · Python", subtitle: "Servicios de IA" },
+          { title: "PostgreSQL + pgvector", subtitle: "Datos & recuperación" },
+        ],
+      },
+      en: {
+        title: "SINAPSISTENCIA",
+        label: "Thesis · AI & software architecture",
+        summary:
+          "AI services, semantic search and an architecture that separates the interface, business logic and data processing.",
+        context:
+          "Software Engineering thesis project, in development since January 2026. It integrates Machine Learning services, information retrieval and document management in an end-to-end architecture.",
+        contributions: [
+          "Architecture design using Angular, Spring Boot, FastAPI and PostgreSQL.",
+          "Implementation of PostgreSQL with pgvector for vector storage and similarity search.",
+          "AI service development with Python and FastAPI, and risk classification and recommendation models using Random Forest and TF-IDF.",
+          "API design and integration between business services, AI models and document management.",
+        ],
+        decisions: [
+          {
+            title: "Separated responsibilities",
+            text: "The interface, business services and AI services have distinct components. This separation makes each responsibility explicit during development.",
+          },
+          {
+            title: "Retrieval in PostgreSQL",
+            text: "pgvector brings vector storage and similarity search to the data layer. The project uses these capabilities for semantic retrieval and recommendation.",
+          },
+          {
+            title: "AI behind APIs",
+            text: "Python and FastAPI expose AI services for integration with business components through APIs.",
+          },
+        ],
+        implementedLabel: "Work described in my CV",
+        futureLabel: "Development direction",
+        implemented: [
+          "Vector storage and semantic search mechanisms.",
+          "AI services and classification and recommendation models.",
+          "API integration between system components.",
+        ],
+        future: [
+          "LLM and RAG component integration: the architecture is prepared to incorporate them.",
+          "Document reproducible retrieval and model evaluations before publishing quality metrics.",
+        ],
+        nodes: [
+          { title: "Angular", subtitle: "Interface" },
+          { title: "Spring Boot", subtitle: "Business services" },
+          { title: "FastAPI · Python", subtitle: "AI services" },
+          { title: "PostgreSQL + pgvector", subtitle: "Data & retrieval" },
+        ],
+      },
+    },
   },
   {
-    id: 8,
+    slug: "agentic-workflows",
+    kind: "experience",
+    tech: ["Amazon Bedrock", "AI Agents", "MCP", "Skills", "AWS"],
+    content: {
+      es: {
+        title: "Agentic workflows",
+        label: "ALIGNET · IA generativa",
+        summary:
+          "Agentes y herramientas de IA generativa aplicados al análisis de impacto y al ciclo de desarrollo de software.",
+        context:
+          "Como practicante de programación en ALIGNET SAC, participo en la implementación de flujos de IA generativa y el desarrollo de agentes sobre Amazon Bedrock. Este caso resume las áreas de trabajo descritas en mi CV.",
+        contributions: [
+          "Implementación de flujos basados en agentes, MCP y skills para asistir procesos de desarrollo.",
+          "Desarrollo de agentes generativos sobre Amazon Bedrock e integración de herramientas de IA.",
+          "Participación en el diseño de componentes reutilizables y definición de estándares técnicos.",
+          "Integración de servicios cloud, incluyendo AWS Lambda, S3, CloudFront, Cognito y CodeArtifact.",
+        ],
+        decisions: [
+          {
+            title: "Herramientas conectadas al flujo",
+            text: "La experiencia incluye agentes, MCP y skills como componentes de asistencia en procesos de ingeniería de software.",
+          },
+          {
+            title: "Componentes reutilizables",
+            text: "Mi participación incluye el diseño de componentes y estándares para facilitar el desarrollo de soluciones basadas en IA.",
+          },
+          {
+            title: "Integración con servicios cloud",
+            text: "El trabajo también abarca integración de servicios AWS y mecanismos de autenticación y acceso a servicios.",
+          },
+        ],
+        implementedLabel: "Áreas de contribución",
+        futureLabel: "Lo que quiero seguir profundizando",
+        implemented: [
+          "Flujos de asistencia y análisis de impacto durante el desarrollo de software.",
+          "Agentes sobre Bedrock e integración de herramientas.",
+          "Componentes reutilizables, documentación e integración cloud.",
+        ],
+        future: [
+          "Evaluación sistemática del comportamiento de agentes y la selección de herramientas.",
+          "Observabilidad, trazabilidad y equilibrio entre calidad, latencia y costo.",
+        ],
+        nodes: [
+          { title: "AI Agents", subtitle: "Flujos de asistencia" },
+          { title: "Amazon Bedrock", subtitle: "IA generativa" },
+          { title: "MCP & Skills", subtitle: "Herramientas & capacidades" },
+          { title: "AWS Services", subtitle: "Integración cloud" },
+        ],
+      },
+      en: {
+        title: "Agentic workflows",
+        label: "ALIGNET · Generative AI",
+        summary:
+          "Generative AI agents and tools applied to impact analysis and the software development lifecycle.",
+        context:
+          "As a programming intern at ALIGNET SAC, I contribute to generative AI workflows and agent development on Amazon Bedrock. This case summarizes the areas of work described in my CV.",
+        contributions: [
+          "Implementation of agent, MCP and skill-based workflows to assist development processes.",
+          "Generative agent development on Amazon Bedrock and AI tool integration.",
+          "Contributions to reusable components and technical standards.",
+          "Cloud service integration, including AWS Lambda, S3, CloudFront, Cognito and CodeArtifact.",
+        ],
+        decisions: [
+          {
+            title: "Tools connected to workflows",
+            text: "The experience includes agents, MCP and skills as assistance components in software engineering processes.",
+          },
+          {
+            title: "Reusable components",
+            text: "My contributions include component design and standards to support the development of AI-based solutions.",
+          },
+          {
+            title: "Cloud service integration",
+            text: "The work also covers AWS service integration and service authentication and access mechanisms.",
+          },
+        ],
+        implementedLabel: "Areas of contribution",
+        futureLabel: "What I want to explore further",
+        implemented: [
+          "Assistance and impact analysis workflows throughout software development.",
+          "Bedrock agents and tool integration.",
+          "Reusable components, documentation and cloud integration.",
+        ],
+        future: [
+          "Systematic evaluation of agent behavior and tool selection.",
+          "Observability, traceability and quality, latency and cost trade-offs.",
+        ],
+        nodes: [
+          { title: "AI Agents", subtitle: "Assistance workflows" },
+          { title: "Amazon Bedrock", subtitle: "Generative AI" },
+          { title: "MCP & Skills", subtitle: "Tools & capabilities" },
+          { title: "AWS Services", subtitle: "Cloud integration" },
+        ],
+      },
+    },
+  },
+];
+
+export const webProjects = [
+  {
     title: "Selekta Food",
-    role: "Full Stack Developer",
-    category: "business",
-    isFeatured: true,
-    description:
-      "Plataforma web corporativa para empresa agro-tech de clasificación inteligente de frutas con IA orientada al mercado de exportación.",
-    problem:
-      "Empresa con tecnología de clasificación de frutas por IA — capaz de superar la precisión humana — sin presencia digital que transmitiera su propuesta de valor a exportadores agrícolas B2B.",
-    solution:
-      "Desarrollé un sitio corporativo completo con showcase de producto, secciones de servicios y beneficios, blog técnico, dashboard de impacto con métricas y un funnel de captación de demos integrado con WhatsApp y formulario.",
-    result:
-      "Plataforma B2B operativa para el mercado agro-exportador de LATAM. Canal de captación de leads activo con solicitudes de demo desde el lanzamiento.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "SEO", "UX/UI"],
-    link: "https://www.selektafood.com/",
     image: "/images/selekta-mini.png",
-    isDemo: false,
+    link: "https://www.selektafood.com/",
+    demo: false,
+    description: {
+      es: "Sitio corporativo agro-tech",
+      en: "Agro-tech corporate website",
+    },
   },
   {
-    id: 2,
+    title: "MV & Abogados",
+    image: "/images/abogados-mini.png",
+    link: "https://mv-abogados.vercel.app/",
+    demo: false,
+    description: {
+      es: "Presencia digital para firma legal",
+      en: "Digital presence for a law firm",
+    },
+  },
+  {
     title: "Apu Garden Lodge",
-    role: "Frontend Developer",
-    category: "business",
-    description:
-      "Sistema de reservas directas para hotel boutique en Cusco, eliminando dependencia de OTAs.",
-    problem:
-      "Hotel boutique pagando 15-20% de comisión por cada reserva en Booking/Expedia. Sin marca digital propia ni canal de venta directa.",
-    solution:
-      "Desarrollé un sitio inmersivo con motor de reservas integrado, pasarela de pagos local e internacional, y UX optimizada para turistas que buscan desde móvil.",
-    result:
-      "Canal de venta directa operativo con 0% comisiones. Percepción de marca premium que justifica tarifas más altas.",
-    tech: ["React", "Tailwind", "UX/UI", "Pasarela de Pagos"],
-    link: "https://apu-garden-lodge.vercel.app/",
     image: "/images/hotel-mini.png",
-    isDemo: false,
+    link: "https://apu-garden-lodge.vercel.app/",
+    demo: false,
+    description: {
+      es: "Sitio web para hotel boutique",
+      en: "Boutique hotel website",
+    },
   },
   {
-    id: 3,
     title: "E-commerce Retail",
-    role: "Full Stack Developer",
-    category: "business",
-    description:
-      "Tienda online completa con catálogo, carrito y checkout optimizado para conversión.",
-    problem:
-      "Negocio retail sin canal de venta digital. Ventas limitadas al tráfico físico y sin forma de escalar fuera de su zona geográfica.",
-    solution:
-      "Plataforma e-commerce con catálogo dinámico, filtros inteligentes, carrito persistente y flujo de checkout en 3 pasos diseñado para minimizar abandono.",
-    result:
-      "Canal de venta online funcional con experiencia de compra fluida y tiempos de carga < 2s.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "E-commerce"],
-    link: "https://demo-retail.vercel.app/",
     image: "/images/mini-retail.png",
-    isDemo: true,
+    link: "https://demo-retail.vercel.app/",
+    demo: true,
+    description: { es: "Demo de tienda online", en: "Online store demo" },
   },
   {
-    id: 4,
     title: "Pastelería & Restaurante",
-    role: "Frontend Developer",
-    category: "business",
-    description:
-      "Web para restaurante-pastelería con menú digital, reservas y pedidos online.",
-    problem:
-      "Restaurante con alta demanda presencial pero sin presencia digital para captar nuevos clientes ni gestionar pedidos fuera del local.",
-    solution:
-      "Sitio con menú visual interactivo, sistema de pedidos online y reservas integradas. Diseño que transmite la identidad artesanal del negocio.",
-    result:
-      "Nuevo canal de pedidos online que reduce carga operativa en mostrador y amplía el alcance del negocio.",
-    tech: ["React", "Tailwind", "UX/UI", "Responsive"],
-    link: "https://demo-restaurante-pasteleria.vercel.app/",
     image: "/images/mini-pasteleria.png",
-    isDemo: true,
+    link: "https://demo-restaurante-pasteleria.vercel.app/",
+    demo: true,
+    description: {
+      es: "Demo de restaurante y pastelería",
+      en: "Restaurant and bakery demo",
+    },
   },
   {
-    id: 5,
     title: "Steakhouse Premium",
-    role: "Frontend Developer",
-    category: "business",
-    description:
-      "Landing page premium para restaurante de carnes con reservas y experiencia inmersiva.",
-    problem:
-      "Restaurante de carnes premium sin web que refleje su posicionamiento de alta gama. Perdiendo reservas frente a competidores con mejor presencia digital.",
-    solution:
-      "Diseño inmersivo con fotografía de producto, animaciones sutiles y sistema de reservas directo. UX enfocada en transmitir exclusividad y calidad.",
-    result:
-      "Presencia digital alineada con el posicionamiento premium. Canal de reservas directo sin intermediarios.",
-    tech: ["React", "Tailwind", "Animaciones", "UX/UI"],
-    link: "https://demo-restaurante-carnes.vercel.app/",
     image: "/images/mini-fuego.png",
-    isDemo: true,
+    link: "https://demo-restaurante-carnes.vercel.app/",
+    demo: true,
+    description: {
+      es: "Demo de restaurante premium",
+      en: "Premium restaurant demo",
+    },
   },
   {
-    id: 6,
     title: "Gimnasio Fitness",
-    role: "Frontend Developer",
-    category: "business",
-    description:
-      "Plataforma web para gimnasio con planes, horarios y captación de membresías online.",
-    problem:
-      "Gimnasio dependiendo solo de walk-ins para nuevas membresías. Sin forma de mostrar instalaciones, planes o captar leads digitalmente.",
-    solution:
-      "Web con showcase de instalaciones, comparador de planes, horarios de clases y formulario de captación de leads con seguimiento automatizado.",
-    result:
-      "Funnel digital de captación de membresías operativo. Reducción de fricción en el proceso de inscripción.",
-    tech: ["React", "Tailwind", "Landing Page", "Lead Gen"],
-    link: "https://demo-gimnasio-eight.vercel.app/",
     image: "/images/gimnasio-mini.png",
-    isDemo: true,
+    link: "https://demo-gimnasio-eight.vercel.app/",
+    demo: true,
+    description: {
+      es: "Demo de sitio para gimnasio",
+      en: "Fitness website demo",
+    },
   },
 ];
