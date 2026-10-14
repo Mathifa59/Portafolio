@@ -1221,16 +1221,6 @@ details[open] summary > svg {
 .footer-credit:hover {
   color: var(--foreground);
 }
-.footer-top {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--muted);
-  font-size: 10px;
-}
-.footer-top:hover {
-  color: var(--foreground);
-}
 
 /* Dedicated case pages. */
 .case-study {
@@ -1888,9 +1878,6 @@ details[open] summary > svg {
   }
   .site-footer p {
     max-width: none;
-  }
-  .footer-top {
-    margin-left: auto;
   }
   .case-study {
     padding-top: 108px;

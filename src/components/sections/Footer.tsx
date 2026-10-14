@@ -1,5 +1,4 @@
 "use client";
-import { ArrowUp } from "lucide-react";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/data/translations";
 
@@ -22,10 +21,6 @@ export default function Footer() {
         className="footer-credit mono"
       >
         © {new Date().getFullYear()} Mathias Vasquez
-      </a>
-      <a href="#main-content" className="footer-top">
-        {tr.top}
-        <ArrowUp size={15} aria-hidden="true" />
       </a>
     </footer>
   );
