@@ -1216,15 +1216,19 @@ details[open] summary > svg {
   color: var(--subtle);
   font-size: 8px;
   line-height: 1.9;
+  transition: color 0.2s;
 }
-.site-footer > a {
+.footer-credit:hover {
+  color: var(--foreground);
+}
+.footer-top {
   display: flex;
   align-items: center;
   gap: 10px;
   color: var(--muted);
   font-size: 10px;
 }
-.site-footer > a:hover {
+.footer-top:hover {
   color: var(--foreground);
 }
 
@@ -1885,7 +1889,7 @@ details[open] summary > svg {
   .site-footer p {
     max-width: none;
   }
-  .site-footer > a {
+  .footer-top {
     margin-left: auto;
   }
   .case-study {

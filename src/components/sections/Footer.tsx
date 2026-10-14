@@ -9,17 +9,21 @@ export default function Footer() {
   return (
     <footer className="site-footer section-shell">
       <div>
-        <span className="wordmark">
+        <a href="#main-content" className="wordmark" aria-label={tr.top}>
           mv<span>.</span>
-        </span>
+        </a>
         <p>{tr.line}</p>
       </div>
-      <span className="footer-credit mono">
+      <a
+        href="https://www.devhorses.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="DevHorses"
+        className="footer-credit mono"
+      >
         © {new Date().getFullYear()} Mathias Vasquez
-        <br />
-        {tr.built}
-      </span>
-      <a href="#main-content">
+      </a>
+      <a href="#main-content" className="footer-top">
         {tr.top}
         <ArrowUp size={15} aria-hidden="true" />
       </a>

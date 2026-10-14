@@ -173,7 +173,6 @@ export const t = {
     footer: {
       line: "Software, sistemas e ideas en evolución.",
       top: "Volver arriba",
-      built: "Construido con Next.js",
     },
     case: {
       back: "Volver a proyectos",
@@ -362,7 +361,6 @@ export const t = {
     footer: {
       line: "Software, systems and ideas in progress.",
       top: "Back to top",
-      built: "Built with Next.js",
     },
     case: {
       back: "Back to projects",
